@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BYTE BEGIN | CS Dept. Association</title>
+  <style>
+/* ===== Base Styles ===== */
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1e40af;
+  --secondary: #f59e0b;
+  --dark: #1e293b;
+  --light: #f8fafc;
+  --gray: #64748b;
+  --success: #10b981;
+  --danger: #ef4444;
+  --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-heading: 'Poppins', var(--font-main);
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-main);
+  line-height: 1.6;
+  color: var(--dark);
+  background-color: var(--light);
+  scroll-behavior: smooth;
+}
+
+/* ===== Header Styles ===== */
+header {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  text-align: center;
+  padding: 3rem 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjAzKSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgZmlsbD0idXJsKCNwYXR0ZXJuKSIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIvPjwvc3ZnPg==');
+  opacity: 0.5;
+}
+
+.header-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+header h1 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  animation: fadeInDown 0.8s ease;
+}
+
+header p {
+  margin: 0.75rem auto 2rem;
+  font-size: 1.25rem;
+  max-width: 700px;
+  opacity: 0.9;
+  animation: fadeIn 1s ease 0.3s forwards;
+  opacity: 0;
+}
+
+/* ===== Navigation ===== */
+nav {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 0.75rem;
+  max-width: fit-content;
+  margin: 0 auto;
+  box-shadow: var(--shadow);
+  animation: fadeInUp 0.8s ease 0.4s forwards;
+  opacity: 0;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1.25rem;
+  border-radius: 8px;
+  transition: var(--transition);
+  display: inline-block;
+}
+
+nav a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+nav a:active {
+  transform: translateY(0);
+}
+
+/* ===== Slidebar Styles ===== */
+.slidebar {
+  position: fixed;
+  top: 0;
+  left: -300px;
+  width: 280px;
+  height: 100vh;
+  background: white;
+  box-shadow: 2px 0 20px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  transition: var(--transition);
+  overflow-y: auto;
+}
+
+.slidebar.show {
+  left: 0;
+}
+
+.slidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  background: var(--primary);
+  color: white;
+}
+
+.slidebar-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.slidebar-close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+.slidebar-nav ul {
+  list-style: none;
+  padding: 1rem 0;
+}
+
+.slidebar-nav li {
+  margin: 0;
+}
+
+.slidebar-nav a {
+  display: block;
+  padding: 0.75rem 1.5rem;
+  color: var(--dark);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.slidebar-nav a:hover {
+  background: rgba(37, 99, 235, 0.1);
+  color: var(--primary);
+}
+
+.slidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+}
+
+.slidebar-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.slidebar-toggle {
+  display: none;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 100;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.75rem;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 40px;
+  width: 40px;
+  z-index: 1100;
+}
+
+.slidebar-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: white;
+  border-radius: 1px;
+  transition: var(--transition);
+}
+
+/* Hide regular nav on mobile */
+@media (max-width: 768px) {
+  header nav {
+    display: none;
+  }
+  
+  .slidebar-toggle {
+    display: flex;
+  }
+}
+
+/* Animation when slidebar opens */
+@keyframes slideIn {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+.slidebar.show {
+  animation: slideIn 0.3s ease forwards;
+}
+
+
+#team .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+#team h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+#team p {
+  text-align: center;
+  font-size: 1rem;
+  color: #555;
+}
+
+.team-members {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.team-member {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+  text-align: center;
+}
+
+.team-member-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.team-member-info {
+  margin-top: 10px;
+}
+
+.team-member-name {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+}
+
+.team-member-role {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.team-member-socials a {
+  font-size: 1rem;
+  color: #007BFF;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.team-member-socials a:hover {
+  text-decoration: underline;
+}
+
+
+
+
+
+
+/* ===== Section Styles ===== */
+section {
+  padding: 4rem 1rem;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.section-container {
+  background-color: white;
+  border-radius: 16px;
+  padding: 2.5rem;
+  box-shadow: var(--shadow);
+  margin-bottom: 2rem;
+}
+
+section h2 {
+  color: var(--primary-dark);
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+section h2::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: var(--secondary);
+  border-radius: 2px;
+}
+
+/* ===== Letter Templates Section ===== */
+#letters ul {
+  columns: 2;
+  gap: 2rem;
+  list-style: none;
+}
+
+#letters li {
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 8px;
+  transition: var(--transition);
+  break-inside: avoid;
+}
+
+#letters li:hover {
+  background-color: rgba(37, 99, 235, 0.05);
+  transform: translateX(5px);
+}
+
+#letters li::before {
+  content: "?";
+  color: var(--secondary);
+  margin-right: 0.75rem;
+  font-weight: bold;
+}
+
+/* ===== Footer ===== */
+footer {
+  background-color: var(--dark);
+  color: white;
+  text-align: center;
+  padding: 2rem 1rem;
+  margin-top: 3rem;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ===== Animations ===== */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+/* ===== blog section =====*/
+
+#blog .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+#blog h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+#blog p {
+  text-align: center;
+  font-size: 1rem;
+  color: #555;
+}
+
+.blog-posts {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.blog-post {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.blog-content {
+  padding: 15px;
+}
+
+.blog-title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.blog-excerpt {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.read-more {
+  font-size: 1rem;
+  color: #007BFF;
+  text-decoration: none;
+}
+
+.read-more:hover {
+  text-decoration: underline;
+}
+
+.resource-links {
+  margin-top: 40px;
+}
+
+.resource-links h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.resource-links ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.resource-links li {
+  margin-bottom: 10px;
+}
+
+.resource-links a {
+  font-size: 1rem;
+  color: #007BFF;
+  text-decoration: none;
+}
+
+.resource-links a:hover {
+  text-decoration: underline;
+}
+
+
+
+
+
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .section-container {
+    padding: 1.5rem;
+  }
+  
+  #letters ul {
+    columns: 1;
+  }
+  
+  section h2 {
+    font-size: 1.75rem;
+  }
+}
+
+#gallery .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.gallery-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.gallery-category {
+  margin-bottom: 20px;
+}
+
+.gallery-category h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.gallery-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.gallery-item {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #f9f9f9;
+}
+
+.gallery-image, .gallery-video {
+  width: 100%;
+  height: auto;
+}
+
+.gallery-item img {
+  object-fit: cover;
+}
+
+.gallery-video {
+  height: 200px;
+  object-fit: cover;
+}
+
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+p {
+  text-align: center;
+  font-size: 1rem;
+  color: #555;
+}
+
+
+
+#events .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.events-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.upcoming-events, .past-events {
+  flex: 1;
+  min-width: 300px;
+}
+
+.event-list .event {
+  display: flex;
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  gap: 15px;
+}
+
+.event-thumbnail {
+  flex-shrink: 0;
+  width: 120px;
+  height: 120px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.event-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.event-details {
+  flex-grow: 1;
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+h4 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.btn-register, .btn-highlight {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.btn-register:hover, .btn-highlight:hover {
+  background-color: #0056b3;
+}
+
+@media (min-width: 992px) {
+  section {
+    padding: 5rem 2rem;
+  }
+}
+
+/* ===== Interactive Elements ===== */
+a, button {
+  transition: var(--transition);
+}
+
+/* ===== Utility Classes ===== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* ===== Hover Effects ===== */
+.hover-scale {
+  transition: var(--transition);
+}
+
+.hover-scale:hover {
+  transform: scale(1.02);
+}
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <h1>BYTE BEGIN</h1>
+    <p>Igniting Innovation at MES M.K. Mackar Pillay College</p>
+  
+  <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#blog">Blog</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#letters">Letter Templates</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+ </header>
+ 
+
+  <!-- Home Section -->
+  <section id="home">
+    <h2>Welcome to BYTE BEGIN</h2>
+   <p>  We are a passionate community at MES M.K. Mackar Pillay College, dedicated to empowering students with the skills and knowledge they need to thrive in the world of computer science. Our association brings together aspiring innovators and tech enthusiasts through events, workshops, and collaborative projects. Join us on this exciting journey to learn, grow, and create something amazing!</p>
+
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+  <h2>About Us</h2>
+  <p>BYTE BEGIN is the Computer Science Department Association at MES M.K. Mackar Pillay College. We are a group of passionate students and faculty members who strive to create a vibrant community that fosters learning, innovation, and creativity. Through various events, workshops, and projects, we aim to bridge the gap between theoretical knowledge and real-world applications.</p>
+  
+  <h3>Our Mission</h3>
+  <p>Our mission is to inspire and empower students to pursue their passion for technology. We aim to provide opportunities for students to explore, learn, and grow in the field of computer science, while also fostering a spirit of collaboration and teamwork within the department.</p>
+  
+  <h3>Our Vision</h3>
+  <p>We envision BYTE BEGIN as a leading student-run tech association that equips students with the skills, confidence, and network they need to make a lasting impact in the tech industry and beyond. We aspire to create an environment where innovation thrives, and where every member has the opportunity to unlock their full potential.</p>
+  
+  <h3>Faculty Coordinators</h3>
+  <ul>
+    <li>Dr.Anu vargese, Head of the Department</li>
+    <li>Prof. Anju krishna, Faculty Coordinator</li>
+  </ul>
+
+  <h3>Student Core Team</h3>
+  <ul>
+    <li>rizwana, President</li>
+    <li>Shiyas, Vice President</li>
+    <li>Humraz, Event Coordinator</li>
+    <li>fathima, Technical Lead</li>
+    <li>ahad, Social Media Manager</li>
+    <li>rushda, Content Manager</li>
+  </ul>
+</section>
+
+
+  <!-- Events Section -->
+<section id="events">
+  <div class="container">
+    <h2>Events</h2>
+    <p>Explore our upcoming and past events, along with registration links and event highlights.</p>
+    
+    <div class="events-section">
+      <!-- Upcoming Events -->
+      <div class="upcoming-events">
+        <h3>Upcoming Events</h3>
+        <div class="event-list">
+          <div class="event">
+            <div class="event-thumbnail">
+              <img src="tech-talk-thumbnail.jpg" alt="Tech Talk Thumbnail">
+            </div>
+            <div class="event-details">
+              <h4>Tech Talk: The Future of AI</h4>
+              <p><strong>Date:</strong> May 15, 2025</p>
+              <p><strong>Time:</strong> 10:00 AM - 12:00 PM</p>
+              <p><strong>Location:</strong> College Auditorium</p>
+              <p>Join us for an insightful session on the advancements in AI technology and its impact on various industries. Don't miss the chance to hear from experts in the field.</p>
+              <a href="registration-link" class="btn-register">Register Now</a>
+            </div>
+          </div>
+
+          <div class="event">
+            <div class="event-thumbnail">
+              <img src="hackathon-thumbnail.jpg" alt="Hackathon Thumbnail">
+            </div>
+            <div class="event-details">
+              <h4>Hackathon: Code for Change</h4>
+              <p><strong>Date:</strong> June 5-6, 2025</p>
+              <p><strong>Time:</strong> 9:00 AM - 6:00 PM</p>
+              <p><strong>Location:</strong> Online</p>
+              <p>Compete with your team to solve real-world challenges in this exciting 24-hour hackathon. Collaborate, innovate, and make a difference through technology!</p>
+              <a href="registration-link" class="btn-register">Register Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Past Events -->
+      <div class="past-events">
+        <h3>Past Events</h3>
+        <div class="event-list">
+          <div class="event">
+            <div class="event-thumbnail">
+              <img src="esports-thumbnail.jpg" alt="Esports Tournament Thumbnail">
+            </div>
+            <div class="event-details">
+              <h4>Esports Tournament: BGMI</h4>
+              <p><strong>Date:</strong> April 20, 2025</p>
+              <p><strong>Highlights:</strong> Our Esports BGMI tournament saw fierce competition, with the winning team securing exciting prizes. Check out the highlights and winning moments.</p>
+              <a href="event-highlight-link" class="btn-highlight">View Highlights</a>
+            </div>
+          </div>
+
+          <div class="event">
+            <div class="event-thumbnail">
+              <img src="photography-thumbnail.jpg" alt="Photography Contest Thumbnail">
+            </div>
+            <div class="event-details">
+              <h4>Photography Contest</h4>
+              <p><strong>Date:</strong> March 25, 2025</p>
+              <p><strong>Highlights:</strong> The Photography Contest brought out incredible talent from students, with winners receiving amazing prizes. Browse through some of the stunning submissions.</p>
+              <a href="event-highlight-link" class="btn-highlight">View Highlights</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Gallery Section -->
+<!-- Gallery Section -->
+<section id="gallery">
+  <div class="container">
+    <h2>Gallery</h2>
+    <p>Photos and videos categorized by event/year.</p>
+    
+    <div class="gallery-categories">
+      <!-- Category for Tech Talk Event -->
+      <div class="gallery-category">
+        <h3>Tech Talk 2025</h3>
+        <div class="gallery-items">
+          <div class="gallery-item">
+            <img src="tech-talk-photo1.jpg" alt="Tech Talk 1" class="gallery-image">
+          </div>
+          <div class="gallery-item">
+            <img src="tech-talk-photo2.jpg" alt="Tech Talk 2" class="gallery-image">
+          </div>
+          <div class="gallery-item">
+            <video controls class="gallery-video">
+              <source src="tech-talk-video.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category for Hackathon Event -->
+      <div class="gallery-category">
+        <h3>Hackathon 2025</h3>
+        <div class="gallery-items">
+          <div class="gallery-item">
+            <img src="hackathon-photo1.jpg" alt="Hackathon 1" class="gallery-image">
+          </div>
+          <div class="gallery-item">
+            <img src="hackathon-photo2.jpg" alt="Hackathon 2" class="gallery-image">
+          </div>
+          <div class="gallery-item">
+            <video controls class="gallery-video">
+              <source src="hackathon-video.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category for Esports Event -->
+      <div class="gallery-category">
+        <h3>Esports 2025</h3>
+        <div class="gallery-items">
+          <div class="gallery-item">
+            <img src="esports-photo1.jpg" alt="Esports 1" class="gallery-image">
+          </div>
+          <div class="gallery-item">
+            <img src="esports-photo2.jpg" alt="Esports 2" class="gallery-image">
+          </div>
+          <div class="gallery-item">
+            <video controls class="gallery-video">
+              <source src="esports-video.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  
+  <!-- Blog Section -->
+<section id="blog">
+  <div class="container">
+    <h2>Blog & Resources</h2>
+    <p>Tech blogs, tutorials, and useful resources.</p>
+
+    <div class="blog-posts">
+      <!-- Blog Post 1 -->
+      <div class="blog-post">
+        <img src="blog-image1.jpg" alt="Blog Post 1" class="blog-image">
+        <div class="blog-content">
+          <h3 class="blog-title">Understanding AI: An Introduction</h3>
+          <p class="blog-excerpt">Explore the basics of Artificial Intelligence and how it's shaping the future of technology.</p>
+          <a href="blog-post1.html" class="read-more">Read More</a>
+        </div>
+      </div>
+
+      <!-- Blog Post 2 -->
+      <div class="blog-post">
+        <img src="blog-image2.jpg" alt="Blog Post 2" class="blog-image">
+        <div class="blog-content">
+          <h3 class="blog-title">Top 5 Programming Languages in 2025</h3>
+          <p class="blog-excerpt">A deep dive into the most popular programming languages and their use cases in 2025.</p>
+          <a href="blog-post2.html" class="read-more">Read More</a>
+        </div>
+      </div>
+
+      <!-- Blog Post 3 -->
+      <div class="blog-post">
+        <img src="blog-image3.jpg" alt="Blog Post 3" class="blog-image">
+        <div class="blog-content">
+          <h3 class="blog-title">Building Your First Website: A Step-by-Step Guide</h3>
+          <p class="blog-excerpt">Learn how to create your first website with HTML, CSS, and JavaScript, even as a beginner.</p>
+          <a href="blog-post3.html" class="read-more">Read More</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="resource-links">
+      <h3>Useful Resources</h3>
+      <ul>
+        <li><a href="https://www.freecodecamp.org" target="_blank">FreeCodeCamp - Learn to code</a></li>
+        <li><a href="https://www.codecademy.com" target="_blank">Codecademy - Interactive coding lessons</a></li>
+        <li><a href="https://www.w3schools.com" target="_blank">W3Schools - Web Development tutorials</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+   
+  <!-- Team Section -->
+<!-- Our Team Section -->
+<section id="team">
+  <div class="container">
+    <h2>Our Team</h2>
+    <p>Core members, roles, alumni, and social links.</p>
+
+    <div class="team-members">
+      <!-- Team Member 1 -->
+      <div class="team-member">
+        <img src="team-member1.jpg" alt="Team Member 1" class="team-member-img">
+        <div class="team-member-info">
+          <h3 class="team-member-name">John Doe</h3>
+          <p class="team-member-role">Team Leader</p>
+          <div class="team-member-socials">
+            <a href="https://linkedin.com/in/johndoe" target="_blank">LinkedIn</a>
+            <a href="https://twitter.com/johndoe" target="_blank">Twitter</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Team Member 2 -->
+      <div class="team-member">
+        <img src="team-member2.jpg" alt="Team Member 2" class="team-member-img">
+        <div class="team-member-info">
+          <h3 class="team-member-name">Jane Smith</h3>
+          <p class="team-member-role">Lead Developer</p>
+          <div class="team-member-socials">
+            <a href="https://linkedin.com/in/janesmith" target="_blank">LinkedIn</a>
+            <a href="https://github.com/janesmith" target="_blank">GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Team Member 3 -->
+      <div class="team-member">
+        <img src="team-member3.jpg" alt="Team Member 3" class="team-member-img">
+        <div class="team-member-info">
+          <h3 class="team-member-name">Emily Johnson</h3>
+          <p class="team-member-role">UX/UI Designer</p>
+          <div class="team-member-socials">
+            <a href="https://linkedin.com/in/emilyjohnson" target="_blank">LinkedIn</a>
+            <a href="https://dribbble.com/emilyjohnson" target="_blank">Dribbble</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  <!-- Letter Templates Section -->
+  <!-- Letter Templates Section -->
+<section id="letters">
+  <h2>Letter Templates</h2>
+  <p>Official and general-purpose letter formats.</p>
+  <ul>
+    <li><a href="event-permission-request-link">Event Permission Request</a></li>
+    <li><a href="sponsorship-request-link">Sponsorship Request</a></li>
+    <li><a href="collaboration-mou-letter-link">Collaboration / MOU Letter</a></li>
+    <li><a href="guest-invitation-link">Guest Invitation</a></li>
+    <li><a href="appreciation-certificate-link">Appreciation / Certificate</a></li>
+    <li><a href="leave-letter-link">Leave Letter</a></li>
+    <li><a href="leaving-letter-link">Leaving Letter</a></li>
+    <li><a href="request-letters-link">Request Letters (lab, equipment, etc.)</a></li>
+    <li><a href="bonafide-request-link">Bonafide Request</a></li>
+    <li><a href="character-certificate-link">Character Certificate</a></li>
+  </ul>
+</section>
+
+
+  <!-- Contact Section -->
+  <!-- Contact Section -->
+<section id="contact">
+  <h2>Contact Us</h2>
+  <p>Email, social media, map embed, and feedback form.</p>
+
+  <!-- Contact Information -->
+  <div class="contact-info">
+    <p>Email: <a href="mailto:contact@bytebegin.com">contact@bytebegin.com</a></p>
+    <p>Follow us on:
+      <a href="https://facebook.com/bytebegin" target="_blank">Facebook</a> |
+      <a href="https://twitter.com/bytebegin" target="_blank">Twitter</a> |
+      <a href="https://instagram.com/bytebegin" target="_blank">Instagram</a>
+    </p>
+  </div>
+
+ 
+
+</section>
+
+
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 BYTE BEGIN | Powered by BYTE BEGIN Team</p>
+  </footer>
+
+
+<script>
+  const toggleBtn = document.querySelector('.slidebar-toggle');
+  const slidebar = document.querySelector('.slidebar');
+  const overlay = document.querySelector('.slidebar-overlay');
+  const closeBtn = document.querySelector('.slidebar-close');
+
+  toggleBtn.addEventListener('click', () => {
+    slidebar.classList.add('show');
+    overlay.classList.add('show');
+  });
+
+  closeBtn.addEventListener('click', () => {
+    slidebar.classList.remove('show');
+    overlay.classList.remove('show');
+  });
+
+  overlay.addEventListener('click', () => {
+    slidebar.classList.remove('show');
+    overlay.classList.remove('show');
+  });
+</script>
+
+</body>
+</html>
