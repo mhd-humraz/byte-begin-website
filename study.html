@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Study Tab - Learning Resources</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fa;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #0077cc;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    main {
+      padding: 30px;
+    }
+    h2 {
+      color: #0077cc;
+    }
+    .resource-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .resource {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+    .resource:hover {
+      transform: translateY(-5px);
+    }
+    .resource a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Study Tab</h1>
+    <p>All Learning Resources in One Place</p>
+  </header>
+
+  <main>
+    <h2>Start Learning</h2>
+    <div class="resource-list">
+      <div class="resource">
+        <a href="html.html">Learn HTML</a>
+        <p>Basic to advanced HTML tutorials</p>
+      </div>
+      <div class="resource">
+        <a href="c_language.html">Learn C Language</a>
+        <p>Comprehensive C programming course</p>
+      </div>
+      <div class="resource">
+        <a href="web_dev.html">Web Development</a>
+        <p>Frontend and backend web dev resources</p>
+      </div>
+      <div class="resource">
+        <a href="css.html">Learn CSS</a>
+        <p>Design stunning websites with CSS</p>
+      </div>
+      <div class="resource">
+        <a href="js.html">JavaScript Basics</a>
+        <p>Interactive web with JavaScript</p>
+      </div>
+      <!-- Add more resources as you create new pages -->
+    </div>
+  </main>
+</body>
+</html>
