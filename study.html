@@ -44,6 +44,21 @@
       color: #333;
       font-weight: bold;
     }
+    .btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 15px;
+      background-color: #0077cc;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+    .btn:hover {
+      background-color: #005fa3;
+    }
   </style>
 </head>
 <body>
@@ -56,24 +71,29 @@
     <h2>Start Learning</h2>
     <div class="resource-list">
       <div class="resource">
-        <a href="https://mhd-humraz.github.io/html-website-beginner/"  target="_blank">Learn HTML</a>
+        <a>Learn HTML</a>
         <p>Basic to advanced HTML tutorials</p>
+         <a class="btn" href="https://mhd-humraz.github.io/html-website-beginner/" target="_blank">Start Learning</a>
       </div>
-      <div class="resource">
+     <div class="resource">
         <a href="c_language.html">Learn C Language</a>
         <p>Comprehensive C programming course</p>
+        <a class="btn" href="c_language.html">Start Learning</a>
       </div>
       <div class="resource">
         <a href="web_dev.html">Web Development</a>
         <p>Frontend and backend web dev resources</p>
+        <a class="btn" href="web_dev.html">Start Learning</a>
       </div>
       <div class="resource">
         <a href="css.html">Learn CSS</a>
         <p>Design stunning websites with CSS</p>
+        <a class="btn" href="css.html">Start Learning</a>
       </div>
       <div class="resource">
         <a href="js.html">JavaScript Basics</a>
         <p>Interactive web with JavaScript</p>
+        <a class="btn" href="js.html">Start Learning</a>
       </div>
       <!-- Add more resources as you create new pages -->
     </div>
