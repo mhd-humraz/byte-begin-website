@@ -248,27 +248,6 @@ nav a:active {
 .slidebar.show {
   animation: slideIn 0.3s ease forwards;
 }
-.slider-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: #fff;
-  border: none;
-  font-size: 2rem;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  z-index: 10;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  border-radius: 50%;
-}
-
-.slider-btn.left {
-  left: 5px;
-}
-
-.slider-btn.right {
-  right: 5px;
-}
 
 
 .card{
