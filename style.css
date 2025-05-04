@@ -250,6 +250,191 @@ nav a:active {
 }
 
 
+
+.card{
+  margin: 0 auto;
+  padding: 2em;
+  width: 300px;
+  background: #1c1f2b;
+  text-align: center;
+  border-radius: 10px;
+  position: relative;
+}
+
+@property --angle{
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.card::after, .card::before{
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, #ff4545);
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: -1;
+  padding: 3px;
+  border-radius: 10px;
+  animation: 3s spin linear infinite;
+}
+.card::before{
+  filter: blur(1.5rem);
+  opacity: 0.5;
+}
+.card-container {
+    display: flex;
+    justify-content: center; /* centers the cards horizontally */
+    flex-wrap: wrap;         /* wraps cards to next line on small screens */
+    gap: 0px;               /* spacing between cards */
+    margin-top: 40px;
+}
+
+        .card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            display: block;
+            border: 4px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+
+@keyframes spin{
+  from{
+    --angle: 0deg;
+  }
+  to{
+    --angle: 360deg;
+  }
+}
+    /* Social Links */
+    .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 25px;
+    }
+    
+    .social-links a {
+        color: var(--secondary-color);
+        font-size: 1.5rem;
+        transition: var(--transition);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--light-gray);
+    }
+    
+    .social-links a:hover {
+        color: var(--white);
+        background: var(--primary-color);
+        transform: scale(1.1) translateY(-3px);
+    }
+    
+    /* CTA Button */
+    .cta-container {
+        text-align: center;
+        margin: 60px 0 40px;
+    }
+    
+    .cta-button {
+        display: inline-block;
+        padding: 16px 32px;
+        text-align: center;
+        background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+        color: var(--white);
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: var(--transition);
+        box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        border: none;
+        cursor: pointer;
+        font-size: 1.1rem;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .cta-button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        transition: 0.5s;
+    }
+    
+    .cta-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(52, 152, 219, 0.5);
+    }
+    
+    .cta-button:hover::before {
+        left: 100%;
+    }
+    
+    /* Loading Optimization */
+    img {
+        max-width: 100%;
+        height: auto;
+        vertical-align: middle;
+    }
+    
+    /* Focus styles for accessibility */
+    a:focus, button:focus {
+        outline: 2px solid var(--primary-color);
+        outline-offset: 2px;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .header h1 {
+            font-size: 2.2rem;
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+        }
+        
+        .card-container {
+            grid-template-columns: 1fr;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .header::after {
+            bottom: 20px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .header h1 {
+            font-size: 1.8rem;
+        }
+        
+        .header p {
+            font-size: 1rem;
+        }
+        
+        .card {
+            padding: 20px;
+        }
+        
+        :root {
+            --card-padding: 20px;
+        }
+    }
 #team .container {
   max-width: 1200px;
   margin: 0 auto;
