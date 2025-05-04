@@ -288,7 +288,7 @@ nav a:active {
     display: flex;
     justify-content: center; /* centers the cards horizontally */
     flex-wrap: wrap;         /* wraps cards to next line on small screens */
-    gap: 0px;               /* spacing between cards */
+    gap: 40px;               /* spacing between cards */
     margin-top: 40px;
 }
 
