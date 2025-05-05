@@ -1,2 +1,4 @@
 <!-- this is testing section for our collabaration -->
 we start soon this project
+
+we started in index page, styles and create a floder for events section for simply recognize..
