@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pasted Events Display</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        .events-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+        }
+        
+        .event-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .event-header {
+            background-color: #3498db;
+            color: white;
+            padding: 15px;
+        }
+        
+        .event-title {
+            margin: 0;
+            font-size: 1.4rem;
+        }
+        
+        .event-date {
+            margin: 5px 0 0;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .event-content {
+            padding: 20px;
+        }
+        
+        .event-description {
+            margin-bottom: 15px;
+        }
+        
+        .event-media {
+            margin-top: 15px;
+        }
+        
+        .event-media img {
+            width: 100%;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        
+        .no-events {
+            text-align: center;
+            font-style: italic;
+            color: #7f8c8d;
+            grid-column: 1 / -1;
+        }
+        
+        .filter-controls {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 8px 16px;
+            background: #ecf0f1;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: #3498db;
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .events-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Past Events</h1>
+    
+    <div class="filter-controls">
+        <button class="filter-btn active" data-filter="all">All Events</button>
+        <button class="filter-btn" data-filter="conference">Conferences</button>
+        <button class="filter-btn" data-filter="workshop">Workshops</button>
+        <button class="filter-btn" data-filter="social">Social</button>
+        <button class="filter-btn" data-filter="other">Other</button>
+    </div>
+    
+    <div class="events-container">
+        <!-- Event cards will be dynamically inserted here -->
+        <div class="no-events">No past events to display at this time.</div>
+    </div>
+
+    <script>
+        // Sample event data - in a real app this would come from an API or database
+        const events = [
+            {
+                id: 1,
+                title: "Annual Tech Conference",
+                date: "October 15, 2023",
+                description: "Our biggest event of the year featuring keynote speakers from leading tech companies and breakout sessions on emerging technologies.",
+                category: "conference",
+                images: [
+                    "https://via.placeholder.com/600x400?text=Conference+Photo+1",
+                    "https://via.placeholder.com/600x400?text=Conference+Photo+2"
+                ]
+            },
+            {
+                id: 2,
+                title: "Web Development Workshop",
+                date: "August 22, 2023",
+                description: "Hands-on workshop covering modern web development techniques including React, Node.js, and responsive design principles.",
+                category: "workshop",
+                images: [
+                    "https://via.placeholder.com/600x400?text=Workshop+Photo"
+                ]
+            },
+            {
+                id: 3,
+                title: "Summer Networking Mixer",
+                date: "July 8, 2023",
+                description: "Casual evening of networking with professionals from various industries. Great opportunity to make new connections.",
+                category: "social",
+                images: []
+            },
+            {
+                id: 4,
+                title: "Community Volunteer Day",
+                date: "June 5, 2023",
+                description: "Giving back to our community through various service projects at local schools and parks.",
+                category: "other",
+                images: [
+                    "https://via.placeholder.com/600x400?text=Volunteer+Photo"
+                ]
+            }
+        ];
+
+        // DOM elements
+        const eventsContainer = document.querySelector('.events-container');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+
+        // Display events
+        function displayEvents(filter = 'all') {
+            eventsContainer.innerHTML = '';
+            
+            const filteredEvents = filter === 'all' 
+                ? events 
+                : events.filter(event => event.category === filter);
+            
+            if (filteredEvents.length === 0) {
+                eventsContainer.innerHTML = '<div class="no-events">No events match your filter.</div>';
+                return;
+            }
+            
+            filteredEvents.forEach(event => {
+                const eventCard = document.createElement('div');
+                eventCard.className = 'event-card';
+                eventCard.dataset.category = event.category;
+                
+                let mediaHTML = '';
+                if (event.images && event.images.length > 0) {
+                    mediaHTML = `<div class="event-media">${
+                        event.images.map(img => `<img src="${img}" alt="${event.title}">`).join('')
+                    }</div>`;
+                }
+                
+                eventCard.innerHTML = `
+                    <div class="event-header">
+                        <h2 class="event-title">${event.title}</h2>
+                        <p class="event-date">${event.date}</p>
+                    </div>
+                    <div class="event-content">
+                        <p class="event-description">${event.description}</p>
+                        ${mediaHTML}
+                    </div>
+                `;
+                
+                eventsContainer.appendChild(eventCard);
+            });
+        }
+
+        // Filter event handlers
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                displayEvents(button.dataset.filter);
+            });
+        });
+
+        // Initial display
+        displayEvents();
+    </script>
+</body>
+</html>
