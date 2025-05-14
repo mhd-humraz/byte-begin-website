@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>College Letter Generator</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 800px; margin: auto; padding: 20px; }
+    input, textarea, select, button { width: 100%; padding: 10px; margin: 10px 0; font-size: 16px; }
+    #preview { background: #f9f9f9; padding: 20px; border: 1px solid #ccc; white-space: pre-line; }
+  </style>
+</head>
+<body>
+  <h2>College Letter Generator</h2>
+
+  <label for="letterType">Select Letter Type:</label>
+  <select id="letterType" onchange="updateForm()">
+    <option value="leave">Leave Letter</option>
+    <option value="bonafide">Bonafide Certificate Request</option>
+    <option value="tc">Application for Transfer Certificate</option>
+  </select>
+
+  <input type="text" id="name" placeholder="Your Full Name">
+  <input type="text" id="course" placeholder="Your Course & Semester">
+  <input type="text" id="to" placeholder="To (e.g., The Principal)">
+  <input type="date" id="date">
+  <textarea id="reason" placeholder="Reason / Details"></textarea>
+
+  <button onclick="generateLetter()">Generate Letter</button>
+
+  <h3>Letter Preview:</h3>
+  <div id="preview"></div>
+
+  <script>
+    function updateForm() {
+      const letterType = document.getElementById('letterType').value;
+      const reason = document.getElementById('reason');
+
+      if (letterType === 'leave') {
+        reason.placeholder = "Reason for leave (e.g., medical emergency)";
+      } else if (letterType === 'bonafide') {
+        reason.placeholder = "Purpose of Bonafide (e.g., scholarship application)";
+      } else if (letterType === 'tc') {
+        reason.placeholder = "Reason for requesting TC";
+      }
+    }
+
+    function generateLetter() {
+      const name = document.getElementById("name").value;
+      const course = document.getElementById("course").value;
+      const to = document.getElementById("to").value;
+      const date = document.getElementById("date").value;
+      const reason = document.getElementById("reason").value;
+      const type = document.getElementById("letterType").value;
+
+      let letter = `Date: ${date}\n\nTo,\n${to},\n[Your College Name]\n\n`;
+
+      if (type === 'leave') {
+        letter += `Subject: Leave Request\n\nRespected Sir/Madam,\n\nI, ${name}, a student of ${course}, request leave for [mention duration] due to the following reason:\n${reason}.\n\nI kindly request you to grant me leave.\n\nThank you.\n\nYours faithfully,\n${name}`;
+      } else if (type === 'bonafide') {
+        letter += `Subject: Request for Bonafide Certificate\n\nRespected Sir/Madam,\n\nI, ${name}, studying in ${course}, kindly request a Bonafide Certificate for the purpose of ${reason}.\n\nI request you to kindly issue the certificate at the earliest.\n\nThank you.\n\nYours faithfully,\n${name}`;
+      } else if (type === 'tc') {
+        letter += `Subject: Application for Transfer Certificate\n\nRespected Sir/Madam,\n\nI, ${name}, a student of ${course}, humbly request a Transfer Certificate due to the reason:\n${reason}.\n\nPlease process my request at the earliest.\n\nThank you.\n\nYours faithfully,\n${name}`;
+      }
+
+      document.getElementById("preview").textContent = letter;
+    }
+
+    // Initialize placeholder
+    updateForm();
+  </script>
+</body>
+</html>
