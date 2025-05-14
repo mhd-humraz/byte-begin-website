@@ -3,32 +3,159 @@
 <head>
   <meta charset="UTF-8">
   <title>College Letter Generator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body { font-family: Arial, sans-serif; max-width: 800px; margin: auto; padding: 20px; }
-    input, textarea, select, button { width: 100%; padding: 10px; margin: 10px 0; font-size: 16px; }
-    #preview { background: #f9f9f9; padding: 20px; border: 1px solid #ccc; white-space: pre-line; }
+    :root {
+      --bg-color: #f0f4f8;
+      --text-color: #2c3e50;
+      --container-bg: #ffffff;
+      --input-bg: #ffffff;
+    }
+
+    body.dark {
+      --bg-color: #1f1f1f;
+      --text-color: #ecf0f1;
+      --container-bg: #2c3e50;
+      --input-bg: #34495e;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .container {
+      background: var(--container-bg);
+      max-width: 800px;
+      margin: auto;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    h2, h3 {
+      text-align: center;
+    }
+
+    label {
+      font-weight: 600;
+      margin-top: 15px;
+      display: block;
+    }
+
+    input, textarea, select, button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 8px;
+      margin-bottom: 15px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color: var(--input-bg);
+      color: var(--text-color);
+    }
+
+    button {
+      background-color: #3498db;
+      color: white;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    #preview {
+      background: #f9f9f9;
+      padding: 20px;
+      border: 1px solid #ccc;
+      white-space: pre-line;
+      border-radius: 8px;
+      margin-top: 20px;
+      color: black;
+    }
+
+    .theme-toggle {
+      float: right;
+      background-color: transparent;
+      color: var(--text-color);
+      border: 2px solid var(--text-color);
+      padding: 5px 10px;
+      border-radius: 20px;
+      cursor: pointer;
+      margin-top: -20px;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px;
+      }
+
+      .button-group {
+        flex-direction: column;
+      }
+
+      .theme-toggle {
+        float: none;
+        display: block;
+        margin: 10px auto;
+      }
+    }
   </style>
 </head>
 <body>
-  <h2>College Letter Generator</h2>
+  <div class="container">
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+    <h2>College Letter Generator</h2>
 
-  <label for="letterType">Select Letter Type:</label>
-  <select id="letterType" onchange="updateForm()">
-    <option value="leave">Leave Letter</option>
-    <option value="bonafide">Bonafide Certificate Request</option>
-    <option value="tc">Application for Transfer Certificate</option>
-  </select>
+    <label for="letterType">Select Letter Type:</label>
+    <select id="letterType" onchange="updateForm()">
+      <option value="leave">Leave Letter</option>
+      <option value="bonafide">Bonafide Certificate Request</option>
+      <option value="tc">Application for Transfer Certificate</option>
+    </select>
 
-  <input type="text" id="name" placeholder="Your Full Name">
-  <input type="text" id="course" placeholder="Your Course & Semester">
-  <input type="text" id="to" placeholder="To (e.g., The Principal)">
-  <input type="date" id="date">
-  <textarea id="reason" placeholder="Reason / Details"></textarea>
+    <label for="name">Your Full Name:</label>
+    <input type="text" id="name" placeholder="e.g., Humraz Ali">
 
-  <button onclick="generateLetter()">Generate Letter</button>
+    <label for="course">Your Course & Semester:</label>
+    <input type="text" id="course" placeholder="e.g., BCA, 2nd Semester">
 
-  <h3>Letter Preview:</h3>
-  <div id="preview"></div>
+    <label for="to">To:</label>
+    <input type="text" id="to" placeholder="e.g., The Principal">
+
+    <label for="date">Date:</label>
+    <input type="date" id="date">
+
+    <label for="reason">Reason / Details:</label>
+    <textarea id="reason" rows="4" placeholder="Enter details..."></textarea>
+
+    <div class="button-group">
+      <button onclick="generateLetter()">Generate Letter</button>
+      <button onclick="printLetter()">Print Letter</button>
+      <button onclick="downloadPDF()">Download as PDF</button>
+    </div>
+
+    <h3>Letter Preview:</h3>
+    <div id="preview"></div>
+  </div>
+
+  <!-- html2pdf.js from CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
   <script>
     function updateForm() {
@@ -65,8 +192,33 @@
       document.getElementById("preview").textContent = letter;
     }
 
-    // Initialize placeholder
-    updateForm();
+    function printLetter() {
+      const printContents = document.getElementById("preview").innerText;
+      const win = window.open('', '', 'height=700,width=900');
+      win.document.write('<pre>' + printContents + '</pre>');
+      win.document.close();
+      win.focus();
+      win.print();
+      win.close();
+    }
+
+    function downloadPDF() {
+      const element = document.getElementById("preview");
+      const opt = {
+        margin:       0.5,
+        filename:     'College_Letter.pdf',
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 2 },
+        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+      };
+      html2pdf().set(opt).from(element).save();
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle('dark');
+    }
+
+    updateForm(); // set initial placeholder
   </script>
 </body>
 </html>
