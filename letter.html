@@ -1,224 +1,496 @@
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>College Letter Generator</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Professional college letter generator for students">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-color: #f0f4f8;
-      --text-color: #2c3e50;
-      --container-bg: #ffffff;
-      --input-bg: #ffffff;
-    }
-
-    body.dark {
-      --bg-color: #1f1f1f;
-      --text-color: #ecf0f1;
-      --container-bg: #2c3e50;
-      --input-bg: #34495e;
+      --primary-color: #2c3e50;
+      --secondary-color: #3498db;
+      --accent-color: #e74c3c;
+      --light-color: #f8f9fa;
+      --dark-color: #343a40;
+      --success-color: #28a745;
+      --warning-color: #ffc107;
+      --danger-color: #dc3545;
+      --border-radius: 8px;
+      --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-color);
+      font-family: 'Roboto', sans-serif;
+      line-height: 1.6;
+      color: var(--dark-color);
+      background-color: #f5f7fa;
       margin: 0;
-      padding: 20px;
-      transition: all 0.3s ease;
+      padding: 0;
+    }
+
+    body.dark-mode {
+      --primary-color: #3498db;
+      --secondary-color: #2c3e50;
+      --light-color: #343a40;
+      --dark-color: #f8f9fa;
+      background-color: #1a1a1a;
     }
 
     .container {
-      background: var(--container-bg);
-      max-width: 800px;
-      margin: auto;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background-color: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      transition: var(--transition);
     }
 
-    h2, h3 {
+    body.dark-mode .container {
+      background-color: #2c3e50;
+      color: #f8f9fa;
+    }
+
+    header {
       text-align: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #eee;
+    }
+
+    body.dark-mode header {
+      border-bottom-color: #444;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--primary-color);
+    }
+
+    body.dark-mode h1,
+    body.dark-mode h2,
+    body.dark-mode h3 {
+      color: var(--primary-color);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
     }
 
     label {
-      font-weight: 600;
-      margin-top: 15px;
       display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: var(--primary-color);
     }
 
-    input, textarea, select, button {
+    body.dark-mode label {
+      color: #f8f9fa;
+    }
+
+    input, textarea, select {
       width: 100%;
-      padding: 12px;
-      margin-top: 8px;
-      margin-bottom: 15px;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      background-color: var(--input-bg);
-      color: var(--text-color);
+      padding: 0.75rem;
+      border: 1px solid #ddd;
+      border-radius: var(--border-radius);
+      font-size: 1rem;
+      transition: var(--transition);
     }
 
-    button {
-      background-color: #3498db;
+    body.dark-mode input,
+    body.dark-mode textarea,
+    body.dark-mode select {
+      background-color: #3d4b5e;
+      border-color: #555;
+      color: #f8f9fa;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: var(--secondary-color);
+      box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background-color: var(--secondary-color);
       color: white;
-      font-weight: bold;
       border: none;
+      border-radius: var(--border-radius);
+      font-size: 1rem;
+      font-weight: 500;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: var(--transition);
+      text-align: center;
     }
 
-    button:hover {
+    .btn:hover {
       background-color: #2980b9;
+      transform: translateY(-2px);
     }
 
-    .button-group {
+    .btn-group {
       display: flex;
-      gap: 10px;
+      gap: 1rem;
+      margin-top: 1.5rem;
       flex-wrap: wrap;
     }
 
+    .btn-primary {
+      background-color: var(--secondary-color);
+    }
+
+    .btn-success {
+      background-color: var(--success-color);
+    }
+
+    .btn-warning {
+      background-color: var(--warning-color);
+      color: var(--dark-color);
+    }
+
+    .btn-danger {
+      background-color: var(--danger-color);
+    }
+
     #preview {
-      background: #f9f9f9;
-      padding: 20px;
-      border: 1px solid #ccc;
+      margin-top: 2rem;
+      padding: 2rem;
+      background-color: var(--light-color);
+      border-radius: var(--border-radius);
+      border: 1px solid #ddd;
       white-space: pre-line;
-      border-radius: 8px;
-      margin-top: 20px;
-      color: black;
+      font-family: 'Times New Roman', Times, serif;
+      line-height: 1.8;
+    }
+
+    body.dark-mode #preview {
+      background-color: #3d4b5e;
+      border-color: #555;
     }
 
     .theme-toggle {
-      float: right;
-      background-color: transparent;
-      color: var(--text-color);
-      border: 2px solid var(--text-color);
-      padding: 5px 10px;
-      border-radius: 20px;
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
       cursor: pointer;
-      margin-top: -20px;
-      margin-bottom: 20px;
+      color: var(--primary-color);
     }
 
-    @media (max-width: 600px) {
+    body.dark-mode .theme-toggle {
+      color: #f8f9fa;
+    }
+
+    .letter-header {
+      text-align: right;
+      margin-bottom: 2rem;
+    }
+
+    .letter-footer {
+      margin-top: 3rem;
+    }
+
+    .letter-signature {
+      margin-top: 4rem;
+    }
+
+    @media (max-width: 768px) {
       .container {
-        padding: 20px;
+        padding: 1rem;
+        margin: 1rem;
       }
 
-      .button-group {
+      .btn-group {
         flex-direction: column;
       }
 
-      .theme-toggle {
-        float: none;
-        display: block;
-        margin: 10px auto;
+      .btn {
+        width: 100%;
       }
+
+      .theme-toggle {
+        position: relative;
+        top: auto;
+        right: auto;
+        margin-bottom: 1rem;
+        text-align: center;
+        display: block;
+      }
+    }
+
+    /* Loading spinner */
+    .spinner {
+      display: none;
+      width: 40px;
+      height: 40px;
+      margin: 0 auto;
+      border: 4px solid rgba(0, 0, 0, 0.1);
+      border-radius: 50%;
+      border-top-color: var(--secondary-color);
+      animation: spin 1s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Toast notification */
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 1rem 2rem;
+      background-color: var(--success-color);
+      color: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
     }
   </style>
 </head>
 <body>
+  <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+  
   <div class="container">
-    <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
-    <h2>College Letter Generator</h2>
+    <header>
+      <h1>College Letter Generator</h1>
+      <p>Create professional college letters in minutes</p>
+    </header>
 
-    <label for="letterType">Select Letter Type:</label>
-    <select id="letterType" onchange="updateForm()">
-      <option value="leave">Leave Letter</option>
-      <option value="bonafide">Bonafide Certificate Request</option>
-      <option value="tc">Application for Transfer Certificate</option>
-    </select>
-
-    <label for="name">Your Full Name:</label>
-    <input type="text" id="name" placeholder="e.g., Humraz Ali">
-
-    <label for="course">Your Course & Semester:</label>
-    <input type="text" id="course" placeholder="e.g., BCA, 2nd Semester">
-
-    <label for="to">To:</label>
-    <input type="text" id="to" placeholder="e.g., The Principal">
-
-    <label for="date">Date:</label>
-    <input type="date" id="date">
-
-    <label for="reason">Reason / Details:</label>
-    <textarea id="reason" rows="4" placeholder="Enter details..."></textarea>
-
-    <div class="button-group">
-      <button onclick="generateLetter()">Generate Letter</button>
-      <button onclick="printLetter()">Print Letter</button>
-      <button onclick="downloadPDF()">Download as PDF</button>
+    <div class="form-group">
+      <label for="letterType">Letter Type</label>
+      <select id="letterType" class="form-control" onchange="updateForm()">
+        <option value="leave">Leave Application</option>
+        <option value="bonafide">Bonafide Certificate Request</option>
+        <option value="tc">Transfer Certificate Application</option>
+        <option value="fee-concession">Fee Concession Request</option>
+        <option value="character-certificate">Character Certificate Request</option>
+      </select>
     </div>
 
-    <h3>Letter Preview:</h3>
-    <div id="preview"></div>
+    <div class="form-group">
+      <label for="collegeName">College Name</label>
+      <input type="text" id="collegeName" class="form-control" placeholder="e.g., ABC College of Arts and Science">
+    </div>
+
+    <div class="form-group">
+      <label for="name">Your Full Name</label>
+      <input type="text" id="name" class="form-control" placeholder="e.g., John Smith">
+    </div>
+
+    <div class="form-group">
+      <label for="course">Course & Semester</label>
+      <input type="text" id="course" class="form-control" placeholder="e.g., B.Sc Computer Science, 3rd Semester">
+    </div>
+
+    <div class="form-group">
+      <label for="rollNo">Roll Number</label>
+      <input type="text" id="rollNo" class="form-control" placeholder="e.g., CS2021001">
+    </div>
+
+    <div class="form-group">
+      <label for="to">Recipient</label>
+      <input type="text" id="to" class="form-control" placeholder="e.g., The Principal">
+    </div>
+
+    <div class="form-group">
+      <label for="date">Date</label>
+      <input type="date" id="date" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="reason">Details</label>
+      <textarea id="reason" class="form-control" rows="4" placeholder="Enter details..."></textarea>
+    </div>
+
+    <div class="btn-group">
+      <button class="btn btn-primary" onclick="generateLetter()">Generate Letter</button>
+      <button class="btn btn-success" onclick="printLetter()">Print Letter</button>
+      <button class="btn btn-warning" onclick="downloadPDF()">Download PDF</button>
+      <button class="btn btn-danger" onclick="clearForm()">Clear Form</button>
+    </div>
+
+    <div id="spinner" class="spinner"></div>
+
+    <h2>Letter Preview</h2>
+    <div id="preview">
+      Your generated letter will appear here...
+    </div>
   </div>
+
+  <div class="toast" id="toast"></div>
 
   <!-- html2pdf.js from CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
   <script>
+    // Set today's date as default
+    document.addEventListener('DOMContentLoaded', function() {
+      const today = new Date().toISOString().split('T')[0];
+      document.getElementById('date').value = today;
+      updateForm();
+    });
+
     function updateForm() {
       const letterType = document.getElementById('letterType').value;
       const reason = document.getElementById('reason');
 
-      if (letterType === 'leave') {
-        reason.placeholder = "Reason for leave (e.g., medical emergency)";
-      } else if (letterType === 'bonafide') {
-        reason.placeholder = "Purpose of Bonafide (e.g., scholarship application)";
-      } else if (letterType === 'tc') {
-        reason.placeholder = "Reason for requesting TC";
+      switch(letterType) {
+        case 'leave':
+          reason.placeholder = "Reason for leave (e.g., medical emergency, family function). Please specify the dates of absence.";
+          break;
+        case 'bonafide':
+          reason.placeholder = "Purpose of Bonafide (e.g., scholarship application, passport verification)";
+          break;
+        case 'tc':
+          reason.placeholder = "Reason for requesting Transfer Certificate (e.g., shifting to another city, changing colleges)";
+          break;
+        case 'fee-concession':
+          reason.placeholder = "Reason for fee concession request (e.g., financial difficulties, family circumstances)";
+          break;
+        case 'character-certificate':
+          reason.placeholder = "Purpose of Character Certificate (e.g., higher studies, employment)";
+          break;
+        default:
+          reason.placeholder = "Enter details...";
       }
     }
 
     function generateLetter() {
-      const name = document.getElementById("name").value;
-      const course = document.getElementById("course").value;
-      const to = document.getElementById("to").value;
-      const date = document.getElementById("date").value;
-      const reason = document.getElementById("reason").value;
+      const name = document.getElementById("name").value.trim();
+      const course = document.getElementById("course").value.trim();
+      const rollNo = document.getElementById("rollNo").value.trim();
+      const to = document.getElementById("to").value.trim();
+      const date = formatDate(document.getElementById("date").value);
+      const reason = document.getElementById("reason").value.trim();
       const type = document.getElementById("letterType").value;
+      const collegeName = document.getElementById("collegeName").value.trim();
 
-      let letter = `Date: ${date}\n\nTo,\n${to},\n[Your College Name]\n\n`;
-
-      if (type === 'leave') {
-        letter += `Subject: Leave Request\n\nRespected Sir/Madam,\n\nI, ${name}, a student of ${course}, request leave for [mention duration] due to the following reason:\n${reason}.\n\nI kindly request you to grant me leave.\n\nThank you.\n\nYours faithfully,\n${name}`;
-      } else if (type === 'bonafide') {
-        letter += `Subject: Request for Bonafide Certificate\n\nRespected Sir/Madam,\n\nI, ${name}, studying in ${course}, kindly request a Bonafide Certificate for the purpose of ${reason}.\n\nI request you to kindly issue the certificate at the earliest.\n\nThank you.\n\nYours faithfully,\n${name}`;
-      } else if (type === 'tc') {
-        letter += `Subject: Application for Transfer Certificate\n\nRespected Sir/Madam,\n\nI, ${name}, a student of ${course}, humbly request a Transfer Certificate due to the reason:\n${reason}.\n\nPlease process my request at the earliest.\n\nThank you.\n\nYours faithfully,\n${name}`;
+      if (!name || !course || !to || !reason) {
+        showToast("Please fill all required fields");
+        return;
       }
 
-      document.getElementById("preview").textContent = letter;
+      let letter = `${collegeName ? collegeName + "\n\n" : ""}Date: ${date}\n\nTo,\n${to}`;
+      letter += `${collegeName ? "" : "\n[Your College Name]"}\n\n`;
+
+      let subject = "";
+      let body = "";
+      let closing = `\n\nThank you for your consideration.\n\nYours faithfully,\n${name}\n${course}${rollNo ? "\nRoll No: " + rollNo : ""}`;
+
+      switch(type) {
+        case 'leave':
+          subject = "Subject: Application for Leave";
+          body = `Respected Sir/Madam,\n\nI, ${name}, a student of ${course}${rollNo ? " (Roll No: " + rollNo + ")" : ""}, hereby request your permission to grant me leave for the following reason:\n\n${reason}.\n\nI assure you that I will compensate for the missed coursework and assignments.`;
+          break;
+        case 'bonafide':
+          subject = "Subject: Request for Bonafide Certificate";
+          body = `Respected Sir/Madam,\n\nI, ${name}, currently pursuing ${course}${rollNo ? " (Roll No: " + rollNo + ")" : ""} at ${collegeName || "your esteemed institution"}, kindly request you to issue me a Bonafide Certificate for the following purpose:\n\n${reason}.\n\nI would be grateful if you could process this request at the earliest.`;
+          break;
+        case 'tc':
+          subject = "Subject: Application for Transfer Certificate";
+          body = `Respected Sir/Madam,\n\nI, ${name}, student of ${course}${rollNo ? " (Roll No: " + rollNo + ")" : ""}, hereby submit my request for a Transfer Certificate due to the following reason:\n\n${reason}.\n\nI request you to kindly process my application and issue the Transfer Certificate at the earliest. I have cleared all my dues and returned all library books and other college property.`;
+          break;
+        case 'fee-concession':
+          subject = "Subject: Request for Fee Concession";
+          body = `Respected Sir/Madam,\n\nI, ${name}, student of ${course}${rollNo ? " (Roll No: " + rollNo + ")" : ""}, am writing to kindly request a concession in my tuition fees due to the following circumstances:\n\n${reason}.\n\nI assure you of my continued dedication to my studies and would be extremely grateful for any assistance you can provide in this matter.`;
+          break;
+        case 'character-certificate':
+          subject = "Subject: Request for Character Certificate";
+          body = `Respected Sir/Madam,\n\nI, ${name}, student of ${course}${rollNo ? " (Roll No: " + rollNo + ")" : ""}, kindly request you to issue me a Character Certificate for the following purpose:\n\n${reason}.\n\nI would be obliged if you could process this request at your earliest convenience.`;
+          break;
+      }
+
+      letter += `${subject}\n\n${body}${closing}`;
+      document.getElementById("preview").innerHTML = letter;
+    }
+
+    function formatDate(dateString) {
+      if (!dateString) return "";
+      const date = new Date(dateString);
+      const options = { day: 'numeric', month: 'long', year: 'numeric' };
+      return date.toLocaleDateString('en-US', options);
     }
 
     function printLetter() {
-      const printContents = document.getElementById("preview").innerText;
-      const win = window.open('', '', 'height=700,width=900');
-      win.document.write('<pre>' + printContents + '</pre>');
-      win.document.close();
-      win.focus();
-      win.print();
-      win.close();
+      const preview = document.getElementById("preview").innerText;
+      if (!preview || preview === "Your generated letter will appear here...") {
+        showToast("Please generate a letter first");
+        return;
+      }
+
+      const printWindow = window.open('', '', 'height=700,width=900');
+      printWindow.document.write(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <title>College Letter</title>
+          <style>
+            body { font-family: 'Times New Roman', Times, serif; line-height: 1.8; padding: 2cm; }
+            .letter { max-width: 800px; margin: 0 auto; }
+            .signature { margin-top: 4cm; }
+          </style>
+        </head>
+        <body>
+          <div class="letter">
+            <pre>${preview}</pre>
+          </div>
+        </body>
+        </html>
+      `);
+      printWindow.document.close();
+      printWindow.focus();
+      setTimeout(() => {
+        printWindow.print();
+        printWindow.close();
+      }, 500);
     }
 
     function downloadPDF() {
       const element = document.getElementById("preview");
+      if (!element.innerText || element.innerText === "Your generated letter will appear here...") {
+        showToast("Please generate a letter first");
+        return;
+      }
+
+      showSpinner(true);
+      
       const opt = {
-        margin:       0.5,
-        filename:     'College_Letter.pdf',
-        image:        { type: 'jpeg', quality: 0.98 },
-        html2canvas:  { scale: 2 },
-        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+        margin: 10,
+        filename: 'college_letter.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2, letterRendering: true },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
       };
-      html2pdf().set(opt).from(element).save();
+
+      html2pdf().set(opt).from(element).save().then(() => {
+        showSpinner(false);
+        showToast("PDF downloaded successfully!");
+      });
     }
 
-    function toggleTheme() {
-      document.body.classList.toggle('dark');
-    }
-
-    updateForm(); // set initial placeholder
-  </script>
-</body>
-</html>
+    function clearForm() {
+      document.getElementById("name").value = "";
+      document.getElementById("course").value = "";
+      document.getElementById("rollNo").value = "";
+      document.getElementById("to").value = "";
+      document.getElementById("reason").value = "";
+      document.getElementById("collegeName").value = "";
+      document.getElementById("preview").innerHTML = "Your generated letter will appear here...";
+      const today = new Date().toISOString().split('T')[0];
+      document.getElementById('date').value = today;
