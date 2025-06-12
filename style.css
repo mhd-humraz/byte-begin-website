@@ -16,6 +16,17 @@
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.Top {
+  /* Button */
+  padding: 50px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+.Top a {
+  text-decoration: none;
+}
+
 body {
   font-family: var(--font-main);
   line-height: 1.6;
