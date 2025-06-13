@@ -18,10 +18,20 @@
 
 .Top {
   /* Button */
-  padding: 50px;
   position: fixed;
   bottom: 20px;
   right: 20px;
+  background: #0077ff;
+  color: #fff;
+  border: none;
+  padding: 15px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 8px #005fcc;
+  transition: all 0.2s ease;
+  
 }
 .Top a {
   text-decoration: none;
