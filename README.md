@@ -27,7 +27,7 @@ Welcome to the official repository of the **BYTE BEGIN** website — the Compute
 - **HTML5**
 - **CSS3**
 - **JavaScript**
-- *(Optionally use Bootstrap / frameworks if added later)*
+- **Bootstrap**
 
 ---
 
@@ -62,8 +62,10 @@ Want to contribute or suggest a feature?
 Feel free to fork the repo, make changes, and submit a pull request. We welcome ideas from everyone!
 
 ## Contact
-📧 Email: bytebegin@csmescollege.ac.in
+📧 Email: bytebegin@csmescollege.ac.in 
+
 🌐 Website: Coming soon!
+
 🧠 Created & Maintained by: Humraz ,shiyas and the BYTE BEGIN team
 
 
