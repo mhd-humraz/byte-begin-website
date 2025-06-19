@@ -16,9 +16,11 @@
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-#sidebar {
-  margin-left: 50px ;
+.sidebar {
+  margin-right: 600px;
+  width: 50px;
 }
+
 
 .Top {
   /* Button */
@@ -54,7 +56,7 @@ header {
   background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   color: white;
   text-align: center;
-  padding: 3rem 1rem;
+  padding: 48px 16px;
   position: relative;
   overflow: hidden;
 }
