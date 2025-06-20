@@ -17,8 +17,11 @@
 }
 
 .sidebar {
-  margin-right: 600px;
+  position: absolute;
   width: 50px;
+}
+.button-fixing {
+  margin-right: 500px;
 }
 
 

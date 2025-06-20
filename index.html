@@ -13,8 +13,6 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
 <body>
-
-
   
   <!-- Top button -->
   <a href="#top">
@@ -24,15 +22,27 @@
  
   <!-- Header -->
   <header>
-    <!-- sidebar button -->
-     <a id="sidebar" class="sidebar d-md-none btn btn-primary">
+    
+      
+  <section>
+    <div class="button-fixing">
+      <!-- sidebar button -->
+     <button id="sidebar" class="sidebar d-md-none btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
       <i class="bi bi-list"></i>
-     </a>
+     </button>
+    </div>
+<div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Backdrop with scrolling</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <p>Try scrolling the rest of the page to see this option in action.</p>
+  </div>
+</div> 
     <h1>BYTE BEGIN</h1>
     <p style="color:white">Igniting Innovation at MES M.K. Mackar Pillay College</p>
     <p style="color:white">𝙒𝙚  𝙗𝙞𝙣𝙙  𝙒𝙚  𝙗𝙮𝙩𝙚  𝙒𝙚 𝙗𝙪𝙞𝙡𝙙</p>
-
-   
 
   <nav>
     <ul>
@@ -49,7 +59,6 @@
   </nav>
  </header>
 
-  <section>
   <!-- Home Section -->
   <section id="home">
     <h2>Welcome to BYTE BEGIN</h2>
