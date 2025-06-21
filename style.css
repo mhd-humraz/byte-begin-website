@@ -16,12 +16,11 @@
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.sidebar {
-  position: absolute;
+.sidebarbtn {
+  position: sticky;
   width: 50px;
-}
-.button-fixing {
-  margin-right: 500px;
+  top: 0;
+  left: 30px;
 }
 
 
