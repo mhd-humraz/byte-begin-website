@@ -713,5 +713,32 @@
    
     <p>&copy; 2025 BYTE BEGIN | Powered by BYTE BEGIN Team</p>
   </footer>
+
+
+      
+       <script>
+  const sidebar = document.getElementById('sidebar');
+  const toggleBtn = document.getElementById('menuToggle');
+  const closeBtn = document.getElementById('closeSidebar');
+  const backdrop = document.getElementById('backdrop');
+
+  toggleBtn.addEventListener('click', () => {
+    sidebar.classList.add('show');
+    backdrop.classList.add('show');
+  });
+
+  closeBtn.addEventListener('click', () => {
+    sidebar.classList.remove('show');
+    backdrop.classList.remove('show');
+  });
+
+  backdrop.addEventListener('click', () => {
+    sidebar.classList.remove('show');
+    backdrop.classList.remove('show');
+  });
+</script>
+
+        
+  
 </body>
 </html>
