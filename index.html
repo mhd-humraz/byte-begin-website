@@ -7,13 +7,10 @@
   <link rel="website icon" type ="png" href="logos.png">
   <link rel="stylesheet" href="style.css"> 
 </head>
-
 <!-- bootstrap links -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 <!-- Tailwind css -->
 <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-
-
 <body>
   <!-- Top button -->
   <a href="#top">
@@ -27,14 +24,13 @@
     <p style="color:white">𝙒𝙚  𝙗𝙞𝙣𝙙  𝙒𝙚  𝙗𝙮𝙩𝙚  𝙒𝙚 𝙗𝙪𝙞𝙡𝙙</p>
 
 
+<!-- Mobile Menu Button -->
+<button id="menuToggle" class="mobile-nav-toggle"><i class="bi bi-list"></i> Menu</button>
 
-    <!-- Mobile Menu Button (only visible on mobile) -->
-<button id="menuToggle" class="menu-button"><i class="bi bi-list"></i> Menu</button>
-
-<!-- Sidebar Navigation -->
-<div id="sidebar" class="sidebar">
+<!-- Mobile Sidebar -->
+<div id="sidebar" class="mobile-sidebar">
   <div class="sidebar-header">
-    <button id="closeSidebar" class="close-btn">&times;</button>
+    <button id="closeSidebar" class="mobile-close-btn">&times;</button>
     <nav>
       <ul>
         <li><a href="#home">Home</a></li>
@@ -52,9 +48,7 @@
 </div>
 
 <!-- Backdrop -->
-<div id="backdrop" class="backdrop"></div>
-
-
+<div id="backdrop" class="mobile-backdrop"></div>
     
        <!-- this for website -->
   <nav>
@@ -714,19 +708,17 @@
 
 
       
-  <script>
+<script>
   const menuToggle = document.getElementById('menuToggle');
   const sidebar = document.getElementById('sidebar');
   const backdrop = document.getElementById('backdrop');
   const closeSidebar = document.getElementById('closeSidebar');
 
-  // Open sidebar
   menuToggle.addEventListener('click', () => {
     sidebar.style.display = 'block';
     backdrop.style.display = 'block';
   });
 
-  // Close sidebar
   closeSidebar.addEventListener('click', () => {
     sidebar.style.display = 'none';
     backdrop.style.display = 'none';
