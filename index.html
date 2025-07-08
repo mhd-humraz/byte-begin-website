@@ -3,722 +3,547 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BYTE BEGIN | CS Dept. Association</title>
-  <link rel="website icon" type ="png" href="logos.png">
-  <link rel="stylesheet" href="style.css"> 
+  <title>BYTE BEGIN | Computer Science Association</title>
+  <meta name="description" content="Official website of BYTE BEGIN, the Computer Science Department Association at MES M.K. Mackar Pillay College">
+  <link rel="icon" href="assets/logos.png" type="image/x-icon">
+  
+  <!-- Preload critical resources -->
+  <link rel="preload" href="css/main.css" as="style">
+  <link rel="preload" href="js/main.js" as="script">
+  <link rel="preload" href="assets/fonts/Inter.woff2" as="font" type="font/woff2" crossorigin>
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/main.css">
+  
+  <!-- Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap">
+  
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
-<!-- bootstrap links -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-
-  <!-- testing -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-  <!-- Tailwind css -->
-<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-
-
 <body>
-  <!-- Top button -->
-  <a href="#top">
-    <button class="Top"><i class="bi bi-arrow-up"></i></i></button>
-  </a>
-  <div id="top"></div>
-  <!-- Header -->
-  <header>
-    <h1>BYTE BEGIN</h1>
-    <p style="color:white">Igniting Innovation at MES M.K. Mackar Pillay College</p>
-    <p style="color:white">𝙒𝙚  𝙗𝙞𝙣𝙙  𝙒𝙚  𝙗𝙮𝙩𝙚  𝙒𝙚 𝙗𝙪𝙞𝙡𝙙</p>
+  <!-- Skip to content link for accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
+  <!-- Header with navigation -->
+  <header class="header">
+    <div class="container">
+      <div class="header__inner">
+        <a href="/" class="logo">
+          <img src="assets/logos.png" alt="BYTE BEGIN Logo" width="180" height="50">
+        </a>
+        
+        <!-- Desktop Navigation -->
+        <nav class="nav">
+          <ul class="nav__list">
+            <li><a href="#home" class="nav__link active">Home</a></li>
+            <li><a href="#about" class="nav__link">About</a></li>
+            <li><a href="#events" class="nav__link">Events</a></li>
+            <li><a href="#gallery" class="nav__link">Gallery</a></li>
+            <li><a href="#team" class="nav__link">Team</a></li>
+            <li><a href="#resources" class="nav__link">Resources</a></li>
+            <li><a href="#contact" class="nav__link">Contact</a></li>
+          </ul>
+        </nav>
+        
+        <!-- Mobile Menu Button -->
+        <button class="mobile-menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
 
-  <!-- Mobile Menu Button -->
-<button id="menuToggle" class="menu-button">☰ Menu</button>
-
-<!-- Sidebar Navigation -->
-<div id="sidebar" class="sidebar">
-  <div class="sidebar-header">
-    <h2> bytebegin </h2>
-     <nav>
-       <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#events">Events</a></li>
-      <li><a href="#gallery">Gallery</a></li>
-      <li><a href="#blog">Blog</a></li>
-      <li><a href="#team">Team</a></li>
-      <li><a href="study.html">Study Tab</a></li>
-      <li><a href="letter.html">Letter Tab</a></li>
-      <li><a href="#contact">Contact</a></li>
-      </ul>
-  </nav>
-    <button id="closeSidebar" class="close-btn">×</button>
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" aria-hidden="true">
+    <div class="mobile-menu__content">
+      <nav>
+        <ul class="mobile-nav__list">
+          <li><a href="#home" class="mobile-nav__link active">Home</a></li>
+          <li><a href="#about" class="mobile-nav__link">About</a></li>
+          <li><a href="#events" class="mobile-nav__link">Events</a></li>
+          <li><a href="#gallery" class="mobile-nav__link">Gallery</a></li>
+          <li><a href="#team" class="mobile-nav__link">Team</a></li>
+          <li><a href="#resources" class="mobile-nav__link">Resources</a></li>
+          <li><a href="#contact" class="mobile-nav__link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </div>
-</div>
 
-<!-- Backdrop -->
-<div id="backdrop" class="backdrop"></div>
+  <main id="main-content">
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="container">
+        <div class="hero__content">
+          <h1 class="hero__title">Igniting Innovation in Computer Science</h1>
+          <p class="hero__subtitle">BYTE BEGIN - The official CS association of MES M.K. Mackar Pillay College</p>
+          <div class="hero__cta">
+            <a href="#events" class="btn btn--primary">Upcoming Events</a>
+            <a href="#join" class="btn btn--secondary">Join Our Community</a>
+          </div>
+        </div>
+        <div class="hero__image">
+          <img src="assets/hero-illustration.svg" alt="Students collaborating on tech projects" width="600" height="400" loading="lazy">
+        </div>
+      </div>
+    </section>
 
-
-
-
-    
-       <!-- this for website -->
-  <nav>
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#events">Events</a></li>
-      <li><a href="#gallery">Gallery</a></li>
-      <li><a href="#blog">Blog</a></li>
-      <li><a href="#team">Team</a></li>
-       <li><a href="study.html">Study Tab</a></li>
-      <li><a href="letter.html">Letter Tab</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
- </header>
-
-  <!-- Home Section -->
-  <section id="home">
-    <h2>Welcome to BYTE BEGIN</h2>
-
-    <p>
-  We are a passionate and vibrant community based at MES M.K. Mackar Pillay College, dedicated to empowering students with the skills, knowledge, and confidence they need to thrive in the ever-evolving world of computer science.
-      <b>BYTE BEGIN</b> serves as a hub for aspiring innovators, creative thinkers, and tech enthusiasts who are eager to explore new horizons in technology.
-      Through a wide range of engaging events, hands-on workshops, seminars, and collaborative student-led projects, we foster an environment where curiosity meets opportunity.
-      Whether you're a beginner or a tech-savvy creator, we welcome you to be part of our journey — to learn, to grow, and to build something extraordinary together.
-</p>
-
-
-  </section>
-
-  <!-- About Section -->
-  <section id="about">
-  <h2>About Us</h2>
-  <p>BYTE BEGIN is the Computer Science Department Association at MES M.K. Mackar Pillay College. We are a group of passionate students and faculty members who strive to create a vibrant community that fosters learning, innovation, and creativity. Through various events, workshops, and projects, we aim to bridge the gap between theoretical knowledge and real-world applications.</p>
-  
-  <h3>Our Mission</h3>
-  <p>Our mission is to inspire and empower students to pursue their passion for technology. We aim to provide opportunities for students to explore, learn, and grow in the field of computer science, while also fostering a spirit of collaboration and teamwork within the department.</p>
-  
-  <h3>Our Vision</h3>
-  <p>We envision BYTE BEGIN as a leading student-run tech association that equips students with the skills, confidence, and network they need to make a lasting impact in the tech industry and beyond. We aspire to create an environment where innovation thrives, and where every member has the opportunity to unlock their full potential.</p>
-  
-  <h3>Faculty Coordinators</h3>
- <ul>
-  <li>Prof. Anu Varghese, Head of the Department</li>
-  <li>Prof. Anju Krishna, Faculty Coordinator</li>
-</ul>
-
-<h3>Student Core Team</h3>
-<ul>
-  <li>Riswana, Secretary</li>
-  <li>Shiyas, Join Secretary</li>
-  <li>Humraz, Event Coordinator</li>
-  <li>Fathima, Technical Lead</li>
-  <li>Ahad, Social Media Manager</li>
-  <li>Rushda, Content Manager</li>
-</ul>
-
-</section>
-
-
+    <!-- About Section -->
+    <section id="about" class="section about">
+      <div class="container">
+        <div class="section__header">
+          <h2 class="section__title">About BYTE BEGIN</h2>
+          <p class="section__subtitle">Our mission, vision, and what we stand for</p>
+        </div>
+        
+        <div class="about__grid">
+          <div class="about__card">
+            <div class="icon-box">
+              <i class="fas fa-bullseye"></i>
+            </div>
+            <h3>Our Mission</h3>
+            <p>To empower students with technical skills, foster innovation, and create a collaborative learning environment in computer science.</p>
+          </div>
+          
+          <div class="about__card">
+            <div class="icon-box">
+              <i class="fas fa-eye"></i>
+            </div>
+            <h3>Our Vision</h3>
+            <p>To be the premier student-run tech association that bridges academia and industry through hands-on learning.</p>
+          </div>
+          
+          <div class="about__card">
+            <div class="icon-box">
+              <i class="fas fa-users"></i>
+            </div>
+            <h3>Our Community</h3>
+            <p>A vibrant network of 200+ students, alumni, and faculty passionate about technology and innovation.</p>
+          </div>
+        </div>
+        
+        <div class="about__stats">
+          <div class="stat">
+            <span class="stat__number" data-count="50">0</span>
+            <span class="stat__label">Events Hosted</span>
+          </div>
+          <div class="stat">
+            <span class="stat__number" data-count="200">0</span>
+            <span class="stat__label">Active Members</span>
+          </div>
+          <div class="stat">
+            <span class="stat__number" data-count="15">0</span>
+            <span class="stat__label">Projects Completed</span>
+          </div>
+          <div class="stat">
+            <span class="stat__number" data-count="10">0</span>
+            <span class="stat__label">Industry Partners</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- Events Section -->
-<section id="events">
-  <div class="container">
-    <h2>Events</h2>
+    <section id="events" class="section events">
+      <div class="container">
+        <div class="section__header">
+          <h2 class="section__title">Our Events</h2>
+          <p class="section__subtitle">Learning, networking, and innovation opportunities</p>
+        </div>
+        
+        <div class="tabs">
+          <button class="tab-btn active" data-tab="upcoming">Upcoming Events</button>
+          <button class="tab-btn" data-tab="past">Past Events</button>
+        </div>
+        
+        <div class="tab-content active" id="upcoming">
+          <div class="events__grid">
+            <!-- Event Card 1 -->
+            <div class="event-card">
+              <div class="event-card__date">
+                <span class="day">15</span>
+                <span class="month">May</span>
+              </div>
+              <div class="event-card__content">
+                <h3 class="event-card__title">Tech Talk: The Future of AI</h3>
+                <div class="event-card__meta">
+                  <span><i class="far fa-clock"></i> 10:00 AM - 12:00 PM</span>
+                  <span><i class="fas fa-map-marker-alt"></i> College Auditorium</span>
+                </div>
+                <p class="event-card__desc">Join us for an insightful session on AI advancements and their industry impact with leading experts.</p>
+                <div class="event-card__cta">
+                  <a href="#" class="btn btn--small">Register Now</a>
+                  <a href="#" class="text-link">Learn More</a>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Event Card 2 -->
+            <div class="event-card">
+              <div class="event-card__date">
+                <span class="day">05</span>
+                <span class="month">Jun</span>
+              </div>
+              <div class="event-card__content">
+                <h3 class="event-card__title">Hackathon: Code for Change</h3>
+                <div class="event-card__meta">
+                  <span><i class="far fa-clock"></i> 9:00 AM - 6:00 PM</span>
+                  <span><i class="fas fa-map-marker-alt"></i> Online Event</span>
+                </div>
+                <p class="event-card__desc">24-hour coding competition to solve real-world challenges. Prizes for top teams!</p>
+                <div class="event-card__cta">
+                  <a href="#" class="btn btn--small">Register Now</a>
+                  <a href="#" class="text-link">Learn More</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="tab-content" id="past">
+          <div class="events__grid">
+            <!-- Past Event Card 1 -->
+            <div class="event-card">
+              <div class="event-card__image">
+                <img src="assets/events/cyber-day.jpg" alt="Cyber Day event" loading="lazy">
+              </div>
+              <div class="event-card__content">
+                <h3 class="event-card__title">Cyber Day 2023</h3>
+                <div class="event-card__meta">
+                  <span><i class="far fa-calendar"></i> February 15, 2023</span>
+                </div>
+                <p class="event-card__desc">Our annual cybersecurity awareness event featuring workshops, CTF competition, and expert talks.</p>
+                <div class="event-card__cta">
+                  <a href="#" class="btn btn--small">View Photos</a>
+                  <a href="#" class="text-link">Event Recap</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <div class="events-section">
-      <!-- Upcoming Events -->
-      <div class="upcoming-events">
-        <h3>Upcoming Events</h3>
-        <div class="event-list">
+    <!-- Team Section -->
+    <section id="team" class="section team">
+      <div class="container">
+        <div class="section__header">
+          <h2 class="section__title">Our Team</h2>
+          <p class="section__subtitle">Meet the people behind BYTE BEGIN</p>
+        </div>
+        
+        <div class="team__grid">
+          <!-- Team Member 1 -->
+          <div class="team-card">
+            <div class="team-card__image">
+              <img src="assets/team/rizwana.jpeg" alt="Rizwana" loading="lazy">
+              <div class="team-card__social">
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" aria-label="Email"><i class="far fa-envelope"></i></a>
+              </div>
+            </div>
+            <div class="team-card__info">
+              <h3 class="team-card__name">Rizwana</h3>
+              <p class="team-card__role">Secretary</p>
+            </div>
+          </div>
           
-          <!-- Tech Talk Event -->
-          <div class="event">
-            <div class="event-thumbnail">
-              <img src="tech-talk-thumbnail.jpg" alt="Tech Talk: The Future of AI Thumbnail">
+          <!-- Team Member 2 -->
+          <div class="team-card">
+            <div class="team-card__image">
+              <img src="assets/team/shiyas.jpeg" alt="Shiyas" loading="lazy">
+              <div class="team-card__social">
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" aria-label="Email"><i class="far fa-envelope"></i></a>
+              </div>
             </div>
-            <div class="event-details">
-              <h4>Tech Talk: The Future of AI</h4>
-              <p><strong>Date:</strong> May 15, 2025</p>
-              <p><strong>Time:</strong> 10:00 AM - 12:00 PM</p>
-              <p><strong>Location:</strong> College Auditorium</p>
-              <p>Join us for an insightful session on the advancements in AI technology and its impact on various industries. Don't miss the chance to hear from experts in the field.</p>
-              <a href="registration-link" class="btn-register">Register Now</a>
-            </div>
-          </div>
-
-          <!-- Hackathon Event -->
-          <div class="event">
-            <div class="event-thumbnail">
-              <img src="hackathon-thumbnail.jpg" alt="Hackathon: Code for Change Thumbnail">
-            </div>
-            <div class="event-details">
-              <h4>Hackathon: Code for Change</h4>
-              <p><strong>Date:</strong> June 5-6, 2025</p>
-              <p><strong>Time:</strong> 9:00 AM - 6:00 PM</p>
-              <p><strong>Location:</strong> Online</p>
-              <p>Compete with your team to solve real-world challenges in this exciting 24-hour hackathon. Collaborate, innovate, and make a difference through technology!</p>
-              <a href="registration-link" class="btn-register">Register Now</a>
+            <div class="team-card__info">
+              <h3 class="team-card__name">Shiyas</h3>
+              <p class="team-card__role">Joint Secretary</p>
             </div>
           </div>
-
-        </div>
-      </div>
-
-      <!-- Past Events -->
-      <div class="past-events">
-        <h3>Past Events</h3>
-        <div class="event-list">
-
-          <!-- Cyber Day -->
-          <div class="event">
-            <div class="event-thumbnail">
-              <img src="events/cyber/cyberthumline.jpeg" alt="Cyber Day 2025 Thumbnail">
-            </div>
-            <div class="event-details">
-              <h4>Cyber Day 2025</h4>
-              <p><strong>Date:</strong> February 15, 2025</p>
-              <p><strong>Highlights:</strong> Cyber Day featured engaging tech talks, hands-on workshops, and cybersecurity awareness sessions. Explore the best moments from the event.</p>
-              <a href="events/cyber/cyber.html" class="btn-highlight">View Highlights</a>
-            </div>
-          </div>
-
           
-          <!-- BYTE BEGIN Inauguration -->
-          <div class="event">
-            <div class="event-thumbnail">
-              <img src="inauguration-thumbnail.jpg" alt="Inauguration of BYTE BEGIN Thumbnail">
+
+          <!-- Team Member 3 -->
+          <div class="team-card">
+            <div class="team-card__image">
+              <img src="assets/team/humraz.jpeg" alt="Shiyas" loading="lazy">
+              <div class="team-card__social">
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" aria-label="Email"><i class="far fa-envelope"></i></a>
+              </div>
             </div>
-            <div class="event-details">
-              <h4>Inauguration of BYTE BEGIN</h4>
-              <p><strong>Date:</strong> March 12, 2025</p>
-              <p><strong>Highlights:</strong> The inauguration of BYTE BEGIN marked a momentous occasion for the Computer Science Department. It featured speeches from faculty members, including the HoD, and the introduction of our core team and the vision for BYTE BEGIN.</p>
-              <p>The ceremony was followed by engaging interactions between students, faculty, and alumni.</p>
-              <a href="events/inauguration.html" class="btn-highlight">View Highlights</a>
+            <div class="team-card__info">
+              <h3 class="team-card__name"> humraz</h3>
+              <p class="team-card__role">Event Planner</p>
             </div>
           </div>
+          
 
- 
+            <!-- Team Member 4 -->
+          <div class="team-card">
+            <div class="team-card__image">
+              <img src="assets/team/rushda.jpeg" alt="Shiyas" loading="lazy">
+              <div class="team-card__social">
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" aria-label="Email"><i class="far fa-envelope"></i></a>
+              </div>
+            </div>
+            <div class="team-card__info">
+              <h3 class="team-card__name">Rushda</h3>
+              <p class="team-card__role">Event Coordinator</p>
+            </div>
+          </div>
+          
+          <!-- Team Member 5 -->
+          <div class="team-card">
+            <div class="team-card__image">
+              <img src="assets/team/fathima.jpeg" alt="Shiyas" loading="lazy">
+              <div class="team-card__social">
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" aria-label="Email"><i class="far fa-envelope"></i></a>
+              </div>
+            </div>
+            <div class="team-card__info">
+              <h3 class="team-card__name">Fathima</h3>
+              <p class="team-card__role">Class Instructor</p>
+            </div>
+          </div>
+          
+      	 <!-- Team Member 6 -->
+          <div class="team-card">
+            <div class="team-card__image">
+              <img src="assets/team/ahad.jpeg" alt="Shiyas" loading="lazy">
+              <div class="team-card__social">
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" aria-label="Email"><i class="far fa-envelope"></i></a>
+              </div>
+            </div>
+            <div class="team-card__info">
+              <h3 class="team-card__name">Ahad</h3>
+              <p class="team-card__role">Social Media Manager</p>
+            </div>
+          </div>
+         
+          <!-- More team members... -->
         </div>
-      </div>
-
-      <!-- Link to all past events -->
-      <div class="view-all-events">
-        <a href="events/past.html" class="btn-highlight">View All Past Events</a>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-  
-<!-- Gallery Section -->
-<section id="gallery">
-  <div class="container">
-    <h2>Gallery</h2>
-     
-    <div class="gallery-categories">
-      <!-- Category for Tech Talk Event -->
-      <div class="gallery-category">
-        <h3>Tech Talk 2025</h3>
-        <div class="gallery-items">
-          <div class="gallery-item">
-            <img src="tech-talk-photo1.jpg" alt="Tech Talk 1" class="gallery-image">
-          </div>
-          <div class="gallery-item">
-            <img src="tech-talk-photo2.jpg" alt="Tech Talk 2" class="gallery-image">
-          </div>
-          <div class="gallery-item">
-            <video controls class="gallery-video">
-              <source src="tech-talk-video.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        </div>
-      </div>
-
-      <!-- Category for Hackathon Event -->
-      <div class="gallery-category">
-        <h3>Hackathon 2025</h3>
-        <div class="gallery-items">
-          <div class="gallery-item">
-            <img src="hackathon-photo1.jpg" alt="Hackathon 1" class="gallery-image">
-          </div>
-          <div class="gallery-item">
-            <img src="hackathon-photo2.jpg" alt="Hackathon 2" class="gallery-image">
-          </div>
-          <div class="gallery-item">
-            <video controls class="gallery-video">
-              <source src="hackathon-video.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        </div>
-      </div>
-
-      <!-- Category for Esports Event -->
-      <div class="gallery-category">
-        <h3>Esports 2025</h3>
-        <div class="gallery-items">
-          <div class="gallery-item">
-            <img src="esports-photo1.jpg" alt="Esports 1" class="gallery-image">
-          </div>
-          <div class="gallery-item">
-            <img src="esports-photo2.jpg" alt="Esports 2" class="gallery-image">
-          </div>
-          <div class="gallery-item">
-            <video controls class="gallery-video">
-              <source src="esports-video.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
+        
+        <div class="faculty">
+          <h3 class="faculty__title">Faculty Coordinators</h3>
+          <div class="faculty__list">
+            <div class="faculty__item">
+              <p>Prof. Anu Varghese</p>
+              <span>Head of Department</span>
+            </div>
+            <div class="faculty__item">
+              <p>Prof. Anju Krishna</p>
+              <span>Faculty Coordinator</span>
+            </div>
           </div>
         </div>
       </div>
+    </section>
 
+    <!-- Resources Section -->
+    <section id="resources" class="section resources">
+      <div class="container">
+        <div class="section__header">
+          <h2 class="section__title">Resources</h2>
+          <p class="section__subtitle">Tools and materials for your learning journey</p>
+        </div>
+        
+        <div class="resources__grid">
+          <div class="resource-card">
+            <div class="resource-card__icon">
+              <i class="fas fa-book-open"></i>
+            </div>
+            <h3 class="resource-card__title">Study Materials</h3>
+            <p class="resource-card__desc">Curated collection of textbooks, notes, and reference materials for all CS courses.</p>
+            <a href="#" class="btn btn--small btn--outline">Explore</a>
+          </div>
+          
+          <div class="resource-card">
+            <div class="resource-card__icon">
+              <i class="fas fa-file-alt"></i>
+            </div>
+            <h3 class="resource-card__title">Letter Templates</h3>
+            <p class="resource-card__desc">Ready-to-use templates for various college-related letters and requests.</p>
+            <a href="#" class="btn btn--small btn--outline">View Templates</a>
+          </div>
+          
+          <div class="resource-card">
+            <div class="resource-card__icon">
+              <i class="fas fa-laptop-code"></i>
+            </div>
+            <h3 class="resource-card__title">Coding Resources</h3>
+            <p class="resource-card__desc">Handpicked tutorials, practice platforms, and project ideas.</p>
+            <a href="#" class="btn btn--small btn--outline">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <!-- Join CTA Section -->
+    <section id="join" class="section cta">
+      <div class="container">
+        <div class="cta__content">
+          <h2 class="cta__title">Ready to join our community?</h2>
+          <p class="cta__text">Become part of the most active tech community on campus and unlock exclusive benefits.</p>
+          <div class="cta__buttons">
+            <a href="#" class="btn btn--primary btn--large">Register Now</a>
+            <a href="#" class="btn btn--outline btn--large">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+      <div class="container">
+        <div class="section__header">
+          <h2 class="section__title">Contact Us</h2>
+          <p class="section__subtitle">Get in touch with the BYTE BEGIN team</p>
+        </div>
+        
+        <div class="contact__grid">
+          <div class="contact__info">
+            <div class="contact__item">
+              <div class="contact__icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contact__details">
+                <h3>Location</h3>
+                <p>Computer Science Department<br>MES M.K. Mackar Pillay College</p>
+              </div>
+            </div>
+            
+            <div class="contact__item">
+              <div class="contact__icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact__details">
+                <h3>Email</h3>
+                <p><a href="mailto:contact@bytebegin.org">contact@bytebegin.org</a></p>
+              </div>
+            </div>
+            
+            <div class="contact__item">
+              <div class="contact__icon">
+                <i class="fas fa-phone-alt"></i>
+              </div>
+              <div class="contact__details">
+                <h3>Phone</h3>
+                <p><a href="tel:+911234567890">+91 12345 67890</a></p>
+              </div>
+            </div>
+            
+            <div class="contact__social">
+              <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+          </div>
+          
+          <div class="contact__form">
+            <form id="contactForm">
+              <div class="form-group">
+                <input type="text" id="name" name="name" required>
+                <label for="name">Your Name</label>
+              </div>
+              
+              <div class="form-group">
+                <input type="email" id="email" name="email" required>
+                <label for="email">Email Address</label>
+              </div>
+              
+              <div class="form-group">
+                <input type="text" id="subject" name="subject" required>
+                <label for="subject">Subject</label>
+              </div>
+              
+              <div class="form-group">
+                <textarea id="message" name="message" rows="5" required></textarea>
+                <label for="message">Your Message</label>
+              </div>
+              
+              <button type="submit" class="btn btn--primary">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__col">
+          <div class="footer__logo">
+            <img src="assets/logos.png" alt="BYTE BEGIN Logo" width="150">
+          </div>
+          <p class="footer__about">BYTE BEGIN is the official Computer Science Department Association of MES M.K. Mackar Pillay College.</p>
+        </div>
+        
+        <div class="footer__col">
+          <h3 class="footer__title">Quick Links</h3>
+          <ul class="footer__links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#team">Our Team</a></li>
+            <li><a href="#resources">Resources</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer__col">
+          <h3 class="footer__title">Resources</h3>
+          <ul class="footer__links">
+            <li><a href="#">Study Materials</a></li>
+            <li><a href="#">Letter Templates</a></li>
+            <li><a href="#">Coding Resources</a></li>
+            <li><a href="#">Event Gallery</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer__col">
+          <h3 class="footer__title">Newsletter</h3>
+          <p>Subscribe to our newsletter for updates on events and opportunities.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Your email address" required>
+            <button type="submit" class="btn btn--small">Subscribe</button>
+          </form>
+        </div>
+      </div>
       
-      <!-- Category for cyberday Event -->
-
-      <div class="gallery-category">
-  <h3>Cyber Day 2025</h3>
-  <div class="gallery-items">
-    <div class="gallery-item">
-      <img src="events/cyber/cyber1.jpeg" alt="Cyber Day 1" class="gallery-image">
-    </div>
-    <div class="gallery-item">
-      <img src="events/cyber/cyber3.jpeg" alt="Cyber Day 2" class="gallery-image">
-    </div>
-    <div class="gallery-item">
-      <video controls class="gallery-video">
-        <source src="events/cyber/VID-20241212-WA0081.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </div>
-  </div>
-</div>
-
-    </div>
-  </div>
-</section>
-
-
-  
-  <!-- Blog Section -->
-<section id="blog">
-  <div class="container">
-    <h2>Blog & Resources</h2>
-  
-    <div class="blog-posts">
-      <!-- Blog Post 1 -->
-      <div class="blog-post">
-        <img src="blog-image1.jpg" alt="Blog Post 1" class="blog-image">
-        <div class="blog-content">
-          <h3 class="blog-title">Understanding AI: An Introduction</h3>
-          <p class="blog-excerpt">Explore the basics of Artificial Intelligence and how it's shaping the future of technology.</p>
-          <a href="blog-post1.html" class="read-more">Read More</a>
-        </div>
-      </div>
-
-      <!-- Blog Post 2 -->
-      <div class="blog-post">
-        <img src="blog-image2.jpg" alt="Blog Post 2" class="blog-image">
-        <div class="blog-content">
-          <h3 class="blog-title">Top 5 Programming Languages in 2025</h3>
-          <p class="blog-excerpt">A deep dive into the most popular programming languages and their use cases in 2025.</p>
-          <a href="blog-post2.html" class="read-more">Read More</a>
-        </div>
-      </div>
-
-      <!-- Blog Post 3 -->
-      <div class="blog-post">
-        <img src="blog-image3.jpg" alt="Blog Post 3" class="blog-image">
-        <div class="blog-content">
-          <h3 class="blog-title">Building Your First Website: A Step-by-Step Guide</h3>
-          <p class="blog-excerpt">Learn how to create your first website with HTML, CSS, and JavaScript, even as a beginner.</p>
-          <a href="blog-post3.html" class="read-more">Read More</a>
+      <div class="footer__bottom">
+        <p class="copyright">&copy; 2023 BYTE BEGIN. All rights reserved.</p>
+        <div class="footer__legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
         </div>
       </div>
     </div>
-
-    <div class="resource-links">
-      <h3>Useful Resources</h3>
-      <ul>
-        <li><a href="https://www.freecodecamp.org" target="_blank">FreeCodeCamp - Learn to code</a></li>
-        <li><a href="https://www.codecademy.com" target="_blank">Codecademy - Interactive coding lessons</a></li>
-        <li><a href="https://www.w3schools.com" target="_blank">W3Schools - Web Development tutorials</a></li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-
-   
-  <!-- Team Section -->
-
-<section id="team">
-  <div class="container">
-    <h2>Our Team</h2>
-    <div class="card-container">
-
-      <!-- Member: Rizwana -->
-      <div class="card">
-        <img src="img/rizwana.jpeg" alt="Rizwana">
-        <h3 style="color:white">Rizwana</h3>
-        <p class="role" style="color:white">Secretary</p>
-        <div class="social-links">
-          <a href="https://github.com/mhd-humraz" target="_blank" title="GitHub"><a href="https://github.com/mhd-humraz" target="_blank" title="GitHub">
-            <!-- GitHub SVG -->
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor"
-              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-              <path
-                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 
-                3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 
-                6.44-7A5.44 5.44 0 0 0 20 4.77 
-                5.07 5.07 0 0 0 19.91 1S18.73.65 
-                16 2.48a13.38 13.38 0 0 0-8 0C5.27.65 
-                4.09 1 4.09 1A5.07 5.07 0 0 0 4 
-                4.77a5.44 5.44 0 0 0-1.5 3.78c0 
-                5.42 3.3 6.61 6.44 7A3.37 3.37 
-                0 0 0 8 18.13V22" />
-            </svg>
-          </a>
-          <a href="https://wa.me/917736863289" target="_blank" title="WhatsApp">
-            <!-- WhatsApp SVG -->
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#25D366" viewBox="0 0 24 24">
-              <path
-                d="M12.002 0C5.37 0 0 5.373 0 12c0 
-                2.107.547 4.097 1.595 5.875L.057 
-                24l6.257-1.623a11.94 11.94 0 0 
-                0 5.688 1.446h.002c6.63 0 
-                12.002-5.373 12.002-12S18.63 
-                0 12.002 0zm6.691 17.313c-.278.778-1.614 
-                1.51-2.26 1.61-.584.086-1.33.122-2.14-.13a9.96 
-                9.96 0 0 1-4.396-3.31c-1.08-1.28-1.76-2.84-1.968-3.325-.21-.483-.47-1.307-.47-2.15s.5-1.525.673-1.734c.173-.21.385-.262.51-.262h.377c.122 0 .285-.042.447.34.16.383.54 1.323.586 1.417.045.095.074.21.014.34-.06.13-.09.21-.177.327-.088.116-.185.257-.263.35-.086.102-.175.21-.075.415.1.206.448.742.96 1.2.662.593 1.22.775 1.427.862.207.086.327.072.45-.043.122-.115.52-.604.66-.812.14-.208.28-.174.474-.105.193.07 1.223.578 1.433.684.21.104.35.155.4.242.05.086.05.503-.227 1.28z" />
-            </svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- Member: Shiyas -->
-      <div class="card">
-        <img src="img/shiyas.jpeg" alt="Shiyas">
-        <h3 style="color:white">Shiyas</h3>
-        <p class="role" style="color:white">Joint Secretary</p>
-        <div class="social-links">
-          <a href="https://github.com/mhd-humraz" target="_blank" title="GitHub"><a href="https://github.com/mhd-humraz" target="_blank" title="GitHub">
-            <!-- GitHub SVG -->
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor"
-              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-              <path
-                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 
-                3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 
-                6.44-7A5.44 5.44 0 0 0 20 4.77 
-                5.07 5.07 0 0 0 19.91 1S18.73.65 
-                16 2.48a13.38 13.38 0 0 0-8 0C5.27.65 
-                4.09 1 4.09 1A5.07 5.07 0 0 0 4 
-                4.77a5.44 5.44 0 0 0-1.5 3.78c0 
-                5.42 3.3 6.61 6.44 7A3.37 3.37 
-                0 0 0 8 18.13V22" />
-            </svg>
-          </a>
-          <a href="https://wa.me/917736863289" target="_blank" title="WhatsApp">
-            <!-- WhatsApp SVG -->
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#25D366" viewBox="0 0 24 24">
-              <path
-                d="M12.002 0C5.37 0 0 5.373 0 12c0 
-                2.107.547 4.097 1.595 5.875L.057 
-                24l6.257-1.623a11.94 11.94 0 0 
-                0 5.688 1.446h.002c6.63 0 
-                12.002-5.373 12.002-12S18.63 
-                0 12.002 0zm6.691 17.313c-.278.778-1.614 
-                1.51-2.26 1.61-.584.086-1.33.122-2.14-.13a9.96 
-                9.96 0 0 1-4.396-3.31c-1.08-1.28-1.76-2.84-1.968-3.325-.21-.483-.47-1.307-.47-2.15s.5-1.525.673-1.734c.173-.21.385-.262.51-.262h.377c.122 0 .285-.042.447.34.16.383.54 1.323.586 1.417.045.095.074.21.014.34-.06.13-.09.21-.177.327-.088.116-.185.257-.263.35-.086.102-.175.21-.075.415.1.206.448.742.96 1.2.662.593 1.22.775 1.427.862.207.086.327.072.45-.043.122-.115.52-.604.66-.812.14-.208.28-.174.474-.105.193.07 1.223.578 1.433.684.21.104.35.155.4.242.05.086.05.503-.227 1.28z" />
-            </svg>
-           </a>
-        </div>
-      </div>
-
-      <!-- Member: Rushda -->
-      <div class="card">
-        <img src="img/rushda.jpeg" alt="Rushda">
-        <h3 style="color:white">Rushda</h3>
-        <p class="role" style="color:white">Event Coordinator</p>
-        <div class="social-links">
-          <a href="https://github.com/mhd-humraz" target="_blank" title="GitHub"><a href="https://github.com/mhd-humraz" target="_blank" title="GitHub">
-            <!-- GitHub SVG -->
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor"
-              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-              <path
-                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 
-                3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 
-                6.44-7A5.44 5.44 0 0 0 20 4.77 
-                5.07 5.07 0 0 0 19.91 1S18.73.65 
-                16 2.48a13.38 13.38 0 0 0-8 0C5.27.65 
-                4.09 1 4.09 1A5.07 5.07 0 0 0 4 
-                4.77a5.44 5.44 0 0 0-1.5 3.78c0 
-                5.42 3.3 6.61 6.44 7A3.37 3.37 
-                0 0 0 8 18.13V22" />
-            </svg>
-          </a>
-          <a href="https://wa.me/917736863289" target="_blank" title="WhatsApp">
-            <!-- WhatsApp SVG -->
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#25D366" viewBox="0 0 24 24">
-              <path
-                d="M12.002 0C5.37 0 0 5.373 0 12c0 
-                2.107.547 4.097 1.595 5.875L.057 
-                24l6.257-1.623a11.94 11.94 0 0 
-                0 5.688 1.446h.002c6.63 0 
-                12.002-5.373 12.002-12S18.63 
-                0 12.002 0zm6.691 17.313c-.278.778-1.614 
-                1.51-2.26 1.61-.584.086-1.33.122-2.14-.13a9.96 
-                9.96 0 0 1-4.396-3.31c-1.08-1.28-1.76-2.84-1.968-3.325-.21-.483-.47-1.307-.47-2.15s.5-1.525.673-1.734c.173-.21.385-.262.51-.262h.377c.122 0 .285-.042.447.34.16.383.54 1.323.586 1.417.045.095.074.21.014.34-.06.13-.09.21-.177.327-.088.116-.185.257-.263.35-.086.102-.175.21-.075.415.1.206.448.742.96 1.2.662.593 1.22.775 1.427.862.207.086.327.072.45-.043.122-.115.52-.604.66-.812.14-.208.28-.174.474-.105.193.07 1.223.578 1.433.684.21.104.35.155.4.242.05.086.05.503-.227 1.28z" />
-            </svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- Member: Humraz -->
-      <div class="card">
-        <img src="img/humraz.jpeg" alt="Humraz">
-        <h3 style="color:white">Humraz</h3>
-        <p class="role" style="color:white">Event Planner</p>
-        <div class="social-links">
-          <a href="https://github.com/mhd-humraz" target="_blank" title="GitHub"><a href="https://github.com/mhd-humraz" target="_blank" title="GitHub">
-            <!-- GitHub SVG -->
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor"
-              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-              <path
-                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 
-                3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 
-                6.44-7A5.44 5.44 0 0 0 20 4.77 
-                5.07 5.07 0 0 0 19.91 1S18.73.65 
-                16 2.48a13.38 13.38 0 0 0-8 0C5.27.65 
-                4.09 1 4.09 1A5.07 5.07 0 0 0 4 
-                4.77a5.44 5.44 0 0 0-1.5 3.78c0 
-                5.42 3.3 6.61 6.44 7A3.37 3.37 
-                0 0 0 8 18.13V22" />
-            </svg>
-          </a>
-          <a href="https://wa.me/917736863289" target="_blank" title="WhatsApp">
-            <!-- WhatsApp SVG -->
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#25D366" viewBox="0 0 24 24">
-              <path
-                d="M12.002 0C5.37 0 0 5.373 0 12c0 
-                2.107.547 4.097 1.595 5.875L.057 
-                24l6.257-1.623a11.94 11.94 0 0 
-                0 5.688 1.446h.002c6.63 0 
-                12.002-5.373 12.002-12S18.63 
-                0 12.002 0zm6.691 17.313c-.278.778-1.614 
-                1.51-2.26 1.61-.584.086-1.33.122-2.14-.13a9.96 
-                9.96 0 0 1-4.396-3.31c-1.08-1.28-1.76-2.84-1.968-3.325-.21-.483-.47-1.307-.47-2.15s.5-1.525.673-1.734c.173-.21.385-.262.51-.262h.377c.122 0 .285-.042.447.34.16.383.54 1.323.586 1.417.045.095.074.21.014.34-.06.13-.09.21-.177.327-.088.116-.185.257-.263.35-.086.102-.175.21-.075.415.1.206.448.742.96 1.2.662.593 1.22.775 1.427.862.207.086.327.072.45-.043.122-.115.52-.604.66-.812.14-.208.28-.174.474-.105.193.07 1.223.578 1.433.684.21.104.35.155.4.242.05.086.05.503-.227 1.28z" />
-            </svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- Member: Fathima K A -->
-      <div class="card">
-        <img src="img/fathima.jpeg" alt="Fathima K A">
-        <h3 style="color:white">Fathima K A</h3>
-        <p class="role" style="color:white">Class Instructor</p>
-        <div class="social-links">
-          <a href="https://github.com/mhd-humraz" target="_blank" title="GitHub"><a href="https://github.com/mhd-humraz" target="_blank" title="GitHub">
-            <!-- GitHub SVG -->
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor"
-              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-              <path
-                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 
-                3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 
-                6.44-7A5.44 5.44 0 0 0 20 4.77 
-                5.07 5.07 0 0 0 19.91 1S18.73.65 
-                16 2.48a13.38 13.38 0 0 0-8 0C5.27.65 
-                4.09 1 4.09 1A5.07 5.07 0 0 0 4 
-                4.77a5.44 5.44 0 0 0-1.5 3.78c0 
-                5.42 3.3 6.61 6.44 7A3.37 3.37 
-                0 0 0 8 18.13V22" />
-            </svg>
-          </a>
-          <a href="https://wa.me/917736863289" target="_blank" title="WhatsApp">
-            <!-- WhatsApp SVG -->
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#25D366" viewBox="0 0 24 24">
-              <path
-                d="M12.002 0C5.37 0 0 5.373 0 12c0 
-                2.107.547 4.097 1.595 5.875L.057 
-                24l6.257-1.623a11.94 11.94 0 0 
-                0 5.688 1.446h.002c6.63 0 
-                12.002-5.373 12.002-12S18.63 
-                0 12.002 0zm6.691 17.313c-.278.778-1.614 
-                1.51-2.26 1.61-.584.086-1.33.122-2.14-.13a9.96 
-                9.96 0 0 1-4.396-3.31c-1.08-1.28-1.76-2.84-1.968-3.325-.21-.483-.47-1.307-.47-2.15s.5-1.525.673-1.734c.173-.21.385-.262.51-.262h.377c.122 0 .285-.042.447.34.16.383.54 1.323.586 1.417.045.095.074.21.014.34-.06.13-.09.21-.177.327-.088.116-.185.257-.263.35-.086.102-.175.21-.075.415.1.206.448.742.96 1.2.662.593 1.22.775 1.427.862.207.086.327.072.45-.043.122-.115.52-.604.66-.812.14-.208.28-.174.474-.105.193.07 1.223.578 1.433.684.21.104.35.155.4.242.05.086.05.503-.227 1.28z" />
-            </svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- Member: Ahad -->
-      <div class="card">
-        <img src="img/ahad.jpeg" alt="Ahad">
-        <h3 style="color:white">Ahad</h3>
-        <p class="role" style="color:white">Social Media Manager</p>
-        <div class="social-links">
-          <a href="https://github.com/mhd-humraz" target="_blank" title="GitHub"><a href="https://github.com/mhd-humraz" target="_blank" title="GitHub">
-            <!-- GitHub SVG -->
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor"
-              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-              <path
-                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 
-                3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 
-                6.44-7A5.44 5.44 0 0 0 20 4.77 
-                5.07 5.07 0 0 0 19.91 1S18.73.65 
-                16 2.48a13.38 13.38 0 0 0-8 0C5.27.65 
-                4.09 1 4.09 1A5.07 5.07 0 0 0 4 
-                4.77a5.44 5.44 0 0 0-1.5 3.78c0 
-                5.42 3.3 6.61 6.44 7A3.37 3.37 
-                0 0 0 8 18.13V22" />
-            </svg>
-          </a>
-          <a href="https://wa.me/917736863289" target="_blank" title="WhatsApp">
-            <!-- WhatsApp SVG -->
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#25D366" viewBox="0 0 24 24">
-              <path
-                d="M12.002 0C5.37 0 0 5.373 0 12c0 
-                2.107.547 4.097 1.595 5.875L.057 
-                24l6.257-1.623a11.94 11.94 0 0 
-                0 5.688 1.446h.002c6.63 0 
-                12.002-5.373 12.002-12S18.63 
-                0 12.002 0zm6.691 17.313c-.278.778-1.614 
-                1.51-2.26 1.61-.584.086-1.33.122-2.14-.13a9.96 
-                9.96 0 0 1-4.396-3.31c-1.08-1.28-1.76-2.84-1.968-3.325-.21-.483-.47-1.307-.47-2.15s.5-1.525.673-1.734c.173-.21.385-.262.51-.262h.377c.122 0 .285-.042.447.34.16.383.54 1.323.586 1.417.045.095.074.21.014.34-.06.13-.09.21-.177.327-.088.116-.185.257-.263.35-.086.102-.175.21-.075.415.1.206.448.742.96 1.2.662.593 1.22.775 1.427.862.207.086.327.072.45-.043.122-.115.52-.604.66-.812.14-.208.28-.174.474-.105.193.07 1.223.578 1.433.684.21.104.35.155.4.242.05.086.05.503-.227 1.28z" />
-            </svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- Member: Faris -->
-      <div class="card">
-        <img src="img/faris.jpeg" alt="Faris">
-        <h3 style="color:white">Faris</h3>
-        <p class="role" style="color:white">Treasurer</p>
-        <div class="social-links">
-          <a href="https://github.com/mhd-humraz" target="_blank" title="GitHub"><a href="https://github.com/mhd-humraz" target="_blank" title="GitHub">
-            <!-- GitHub SVG -->
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor"
-              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-              <path
-                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 
-                3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 
-                6.44-7A5.44 5.44 0 0 0 20 4.77 
-                5.07 5.07 0 0 0 19.91 1S18.73.65 
-                16 2.48a13.38 13.38 0 0 0-8 0C5.27.65 
-                4.09 1 4.09 1A5.07 5.07 0 0 0 4 
-                4.77a5.44 5.44 0 0 0-1.5 3.78c0 
-                5.42 3.3 6.61 6.44 7A3.37 3.37 
-                0 0 0 8 18.13V22" />
-            </svg>
-          </a>
-          <a href="https://wa.me/917736863289" target="_blank" title="WhatsApp">
-            <!-- WhatsApp SVG -->
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#25D366" viewBox="0 0 24 24">
-              <path
-                d="M12.002 0C5.37 0 0 5.373 0 12c0 
-                2.107.547 4.097 1.595 5.875L.057 
-                24l6.257-1.623a11.94 11.94 0 0 
-                0 5.688 1.446h.002c6.63 0 
-                12.002-5.373 12.002-12S18.63 
-                0 12.002 0zm6.691 17.313c-.278.778-1.614 
-                1.51-2.26 1.61-.584.086-1.33.122-2.14-.13a9.96 
-                9.96 0 0 1-4.396-3.31c-1.08-1.28-1.76-2.84-1.968-3.325-.21-.483-.47-1.307-.47-2.15s.5-1.525.673-1.734c.173-.21.385-.262.51-.262h.377c.122 0 .285-.042.447.34.16.383.54 1.323.586 1.417.045.095.074.21.014.34-.06.13-.09.21-.177.327-.088.116-.185.257-.263.35-.086.102-.175.21-.075.415.1.206.448.742.96 1.2.662.593 1.22.775 1.427.862.207.086.327.072.45-.043.122-.115.52-.604.66-.812.14-.208.28-.174.474-.105.193.07 1.223.578 1.433.684.21.104.35.155.4.242.05.086.05.503-.227 1.28z" />
-            </svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- Member: Fathima Nasrin -->
-      <div class="card">
-        <img src="img/fathimanasrin.jpeg" alt="Fathima Nasrin">
-        <h3 style="color:white">Fathima Nasrin</h3>
-        <p class="role" style="color:white">Technical Support</p>
-        <div class="social-links">
-          <a href="https://github.com/mhd-humraz" target="_blank" title="GitHub"><a href="https://github.com/mhd-humraz" target="_blank" title="GitHub">
-            <!-- GitHub SVG -->
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor"
-              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-              <path
-                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 
-                3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 
-                6.44-7A5.44 5.44 0 0 0 20 4.77 
-                5.07 5.07 0 0 0 19.91 1S18.73.65 
-                16 2.48a13.38 13.38 0 0 0-8 0C5.27.65 
-                4.09 1 4.09 1A5.07 5.07 0 0 0 4 
-                4.77a5.44 5.44 0 0 0-1.5 3.78c0 
-                5.42 3.3 6.61 6.44 7A3.37 3.37 
-                0 0 0 8 18.13V22" />
-            </svg>
-          </a>
-          <a href="https://wa.me/917736863289" target="_blank" title="WhatsApp">
-            <!-- WhatsApp SVG -->
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#25D366" viewBox="0 0 24 24">
-              <path
-                d="M12.002 0C5.37 0 0 5.373 0 12c0 
-                2.107.547 4.097 1.595 5.875L.057 
-                24l6.257-1.623a11.94 11.94 0 0 
-                0 5.688 1.446h.002c6.63 0 
-                12.002-5.373 12.002-12S18.63 
-                0 12.002 0zm6.691 17.313c-.278.778-1.614 
-                1.51-2.26 1.61-.584.086-1.33.122-2.14-.13a9.96 
-                9.96 0 0 1-4.396-3.31c-1.08-1.28-1.76-2.84-1.968-3.325-.21-.483-.47-1.307-.47-2.15s.5-1.525.673-1.734c.173-.21.385-.262.51-.262h.377c.122 0 .285-.042.447.34.16.383.54 1.323.586 1.417.045.095.074.21.014.34-.06.13-.09.21-.177.327-.088.116-.185.257-.263.35-.086.102-.175.21-.075.415.1.206.448.742.96 1.2.662.593 1.22.775 1.427.862.207.086.327.072.45-.043.122-.115.52-.604.66-.812.14-.208.28-.174.474-.105.193.07 1.223.578 1.433.684.21.104.35.155.4.242.05.086.05.503-.227 1.28z" />
-            </svg>
-          </a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-   
-  <!-- Letter Templates Section -->
-<section id="letters">
-  <h2>Letter Templates</h2>
-
-  <ul>
-    <li><a href="letter.html">Event Permission Request</a></li>
-    <li><a href="letter.html">Sponsorship Request</a></li>
-    <li><a href="letter.html">Collaboration / MOU Letter</a></li>
-    <li><a href="letter.html">Guest Invitation</a></li>
-    <li><a href="letter.html">Appreciation / Certificate</a></li>
-    <li><a href="letter.html">Leave Letter</a></li>
-    <li><a href="letter.html">Leaving Letter</a></li>
-    <li><a href="letter.html">Request Letters (lab, equipment, etc.)</a></li>
-    <li><a href="letter.html">Bonafide Request</a></li>
-    <li><a href="letter.html">Character Certificate</a></li>
-  </ul>
-</section>
-
-
-  <!-- Contact Section -->
-<footer>
-  <h2>Contact Us</h2>
-  <p>Email, social media, map embed, and feedback form.</p>
-
-  <!-- Contact Information -->
-  <div >
-    <p>Email: <a href="mailto:contact@bytebegin.com">contact@bytebegin.com</a></p>
-    <p>Follow us on:
-      <a href="https://facebook.com/bytebegin" target="_blank">Facebook</a> |
-      <a href="https://twitter.com/bytebegin" target="_blank">Twitter</a> |
-      <a href="https://instagram.com/bytebegin" target="_blank">Instagram</a>
-    </p>
-  </div>
-   
-    <p>&copy; 2025 BYTE BEGIN | Powered by BYTE BEGIN Team</p>
   </footer>
 
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="back-to-top" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
 
-      
+  <!-- JavaScript -->
+   
        <script>
   const sidebar = document.getElementById('sidebar');
   const toggleBtn = document.getElementById('menuToggle');
@@ -741,7 +566,5 @@
   });
 </script>
 
-        
-  
 </body>
 </html>
