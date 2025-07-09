@@ -36,13 +36,13 @@ Welcome to the official repository of the **BYTE BEGIN** website — the Compute
 ```plaintext
 byte-begin-website/
 ├── index.html
-├── about.html
-├── events.html
-├── team.html
-├── contact.html
 ├── assets/
 │   ├── css/
 │   ├── js/
+│   ├── events/
+│   ├── about/
+│   ├── team/
+│   ├── contact/
 │   └── images/
 └── README.md
 ```
